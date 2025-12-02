@@ -1,14 +1,18 @@
 import { getProducts, createProduct, updateProduct, removeProduct } from "../services/productApi";
+import Loading from "../components/loading";
+import Alert from "../components/alert";
 import { useEffect, useState } from "react";
 
 export default function ProductTienda() {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchProducts = async () => {
             try {
+                setLoading(true);
+                setError(null);
                 const data = await getProducts();
                 console.log(data);
                 setProducts(data);
@@ -22,4 +26,14 @@ export default function ProductTienda() {
         fetchProducts();
     }, []);
 
+    return (
+        <div>
+            <h1>Product Tienda</h1>
+            {loading && <Loading text="Cargando la lista de dulces pasteles..." />}
+            {error && <alert variant="error">{error}</alert>}
+        </div>
+    );
+
 }
+
+
