@@ -4,25 +4,25 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Header from "./components/header.jsx";
 import Footer from "./components/footer.jsx";
 import useModal from "./hooks/useModal.js";
+import Carrusel from "./components/carrusel.jsx";
 
 
 function App() {
 
- const [isOpenCarrito, openModalCarrito, closeModalCarrito] = useModal();
+  const [isOpenCarrito, openModalCarrito, closeModalCarrito] = useModal();
   return (
-    <>
-         
-
-
+    <section className="bg-rose-100">
       <BrowserRouter>
         <Header openModalCarrito={openModalCarrito} />
         <Routes>
-          <Route path="/" element={<ProductTienda isOpenCarrito={isOpenCarrito} closeModalCarrito={closeModalCarrito}  />} />
+          <Route path="/" element={<ProductTienda isOpenCarrito={isOpenCarrito} closeModalCarrito={closeModalCarrito} />} />
           <Route path="/dashboard" element={<DashBoard />} />
         </Routes>
+        <Carrusel />
         <Footer />
       </BrowserRouter>
-    </>
+    </section>
+
   )
 }
 

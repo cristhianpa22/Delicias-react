@@ -1,9 +1,9 @@
-import { getProducts, createProduct, updateProduct, removeProduct } from "../services/productApi";
+import { getProducts} from "../services/productApi";
 import Loading from "../components/loading";
 import Alert from "../components/alert";
 import { useEffect, useState } from "react";
 import Modal from "../components/Modal";
-import useModal from "../hooks/useModal";
+import Hero from "../components/hero";
 
 export default function ProductTienda( { isOpenCarrito, closeModalCarrito } ) {
     const [products, setProducts] = useState([]);
@@ -20,6 +20,7 @@ export default function ProductTienda( { isOpenCarrito, closeModalCarrito } ) {
                 console.log(data);
                 setProducts(data);
             } catch (err) {
+                console.error(err);
                 setError("Failed to fetch products");
             } finally {
                 setLoading(false);
@@ -31,13 +32,15 @@ export default function ProductTienda( { isOpenCarrito, closeModalCarrito } ) {
 
     return (
         <div>
-            <h1>Product Tienda</h1>
+            
             {loading && <Loading text="Cargando la lista de dulces pasteles..." />}
-            {error && <alert variant="error">{error}</alert>}
+            {error && <Alert variant="error">{error}</Alert>}
             <Modal title="Carrito de compras" isOpen={isOpenCarrito} onClose={closeModalCarrito}>
                 <h2>productos</h2>
                 
             </Modal>
+            <Hero />
+
         </div>
     );
 

@@ -5,16 +5,22 @@ import { useEffect, useState } from "react";
 import Modal from "../components/Modal";
 import ProductForm from "../components/productForm";
 import useModal from "../hooks/useModal";
+import Table from "../components/table";
 
 
 export default function DashBoard() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [isOpen, openModal, closeModal] = useModal(); 
-    
+    const [isOpen, openModal, closeModal] = useModal();
 
-   
+
+
+
+    const [submitError, setSubmitError] = useState(null);
+
+
+
 
 
     useEffect(() => {
@@ -26,6 +32,7 @@ export default function DashBoard() {
                 console.log(data);
                 setProducts(data);
             } catch (err) {
+                console.error(err);
                 setError("Failed to fetch products");
             } finally {
                 setLoading(false);
@@ -38,29 +45,71 @@ export default function DashBoard() {
     async function handleAddProduct(product) {
 
         try {
-            const created = await createProduct(products);
-            setProducts([...products, created]);
+            const created = await createProduct(product);
+            setProducts(prev => [...prev, created]); // añadir al array existente
+            +           setSubmitError(null); // limpiar posible error previo
+            +           closeModal();
         } catch (err) {
-            setError("Failed to create product");
+            console.error(err);
+            setSubmitError("Failed to create product");
+        }
+    }
+    async function handleUpdateProduct(id, product) {
+        try {
+            const updated = await updateProduct(id, product);
+            setProducts(prev => prev.map(p => p.id === id ? updated : p));
+            setSubmitError(null);
+            closeModal();
+        } catch (err) {
+            console.error(err);
+            setSubmitError("Failed to update product");
+        }
+    }
+    async function handleDeleteProduct(id) {
+        try {
+            await removeProduct(id);
+            setProducts(prev => prev.filter(p => p.id !== id));
+            setSubmitError(null);
+        } catch (err) {
+            console.error(err);
+            setSubmitError("Failed to delete product");
         }
     }
 
-
     return (
-        <div>
-            <h1>Product Dashboard</h1>
+        <div className=" bg-gradient-to-br from-rose-50 via-pink-50 to-amber-50 p-8">
             {loading && <Loading text="Cargando la lista de dulces pasteles..." />}
             {error && <Alert variant="error">{error}</Alert>}
+            <div className="max-w-6xl mx-auto">
+                <div className="text-center mb-8">
+                    <h1 className="text-4xl font-serif text-rose-900 mb-2">Gestión de Productos</h1>
+                    <p className="text-rose-700 italic">Pastelería Artesanal</p>
+                    <Modal title="Agregar Nuevo Producto" isOpen={isOpen} onClose={closeModal}>
+                        <ProductForm onSubmit={handleAddProduct} submitError={submitError} />
+                    </Modal>
+                </div>
+                <div className="bg-white/80 backdrop-blur rounded-2xl shadow-xl overflow-hidden border border-rose-100">
+                    <div className="p-6 bg-gradient-to-r from-rose-100 to-pink-100 border-b border-rose-200 flex justify-between items-center">
+                        <h2 className="text-2xl font-serif text-rose-900">Nuestros Productos</h2>
+                        <button
+                            className="flex items-center gap-2 bg-rose-600 hover:bg-rose-700 text-white px-4 py-2 rounded-lg transition-colors shadow-md"
+                            onClick={openModal}
+                            aria-label="Agregar Nuevo Producto"
+                        ><i className="fa-solid fa-plus mr-2"></i>
+                            Agregar Producto
+                        </button>
+                    </div>
 
-            <button className="py-3 px-6 bg-pink-500 hover:bg-pink-600 text-white font-bold 
-            text-lg rounded-xl border-b-4 border-amber-500/80 shadow-lg hover:shadow-xl transition  duration-300 transform hover:translate-y-[-2px] flex items-center justify-center"
-                onClick={openModal}
-                aria-label="Agregar Nuevo Producto"
-            ><i className="fa-solid fa-plus mr-2"></i>
-                Agregar Producto</button>
-            <Modal title="Agregar Nuevo Producto" isOpen={isOpen} onClose={closeModal}>
-                <ProductForm onSubmit={handleAddProduct} />
-            </Modal>
+
+
+                    <Table products={products} onUpdateProduct={handleUpdateProduct} onDeleteProduct={handleDeleteProduct} />
+                    <div className="mt-6 text-center text-rose-700 text-sm italic">
+                        {products.length} productos en el catálogo
+                    </div>
+
+
+                </div>
+            </div>
         </div>
     );
 }

@@ -29,13 +29,13 @@ export async function createProduct(payload) {
 /** Partial update (PATCH) — optional for later weeks */
 export async function updateProduct(id, patch) {
   if (!id) throw new Error("Missing product id");
-  const res = await http.put(`/products/${id}`, patch);
+  const res = await http.put(`/productos/${id}`, patch);
   return res.data;
 }
 
 /** Delete — optional for later weeks */
 export async function removeProduct(id) {
   if (!id) throw new Error("Missing product id");
-  const res = await http.delete(`/products/${id}`);
+  const res = await http.delete(`/productos/${id}`);
   return res.data;
 }
