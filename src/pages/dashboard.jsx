@@ -4,16 +4,17 @@ import { getProducts, createProduct, updateProduct, removeProduct } from "../ser
 import { useEffect, useState } from "react";
 import Modal from "../components/Modal";
 import ProductForm from "../components/productForm";
+import useModal from "../hooks/useModal";
 
 
 export default function DashBoard() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, openModal, closeModal] = useModal(); 
+    
 
-    const openModal = () => setIsOpen(true);
-    const closeModal = () => setIsOpen(false);
+   
 
 
     useEffect(() => {
