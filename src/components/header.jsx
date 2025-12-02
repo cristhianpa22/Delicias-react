@@ -1,6 +1,18 @@
 import '../index.css'
-export default function Header() {
+import { Link, useLocation } from 'react-router-dom';
+export default function Header( {openModalCarrito }) {
+
+  const Location = useLocation ();
+
+  const isAdminPath = Location.pathname.startsWith('/dashboard');
+
+  const navLinkTo = isAdminPath ? '/' : '/dashboard';
+  const navLinkText = isAdminPath ? 'Tienda' : 'Admin';
+
+
+
   return (
+
     <header className="w-full flex items-center justify-center mt-4 mb-6">
       <div
         className="
@@ -31,8 +43,16 @@ export default function Header() {
           </p>
         </div>
 
+        {/* navegacion */}
+        {<Link
+          to={navLinkTo}
+          className="text-lg font-bold text-[#6a1a57] 
+        hover:text-[#F37950] transition-colors
+          cursor-pointer">{navLinkText}</Link>
+        }
+
         {/* carrito */}
-        <button
+        {navLinkTo !== '/' && <button 
           className="
             relative flex items-center justify-center
             bg-[#6a1a57]
@@ -42,9 +62,10 @@ export default function Header() {
             shadow-md
             hover:scale-105 transition-transform
           "
+          onClick={openModalCarrito}
         >
           <img
-            src="./src/assets/images/carrito.gif"className="w-6 opacity-90"
+            src="./src/assets/images/carrito.gif" className="w-6 opacity-90"
           />
           <span
             className="
@@ -57,7 +78,7 @@ export default function Header() {
           >
             4
           </span>
-        </button>
+        </button>}
       </div>
     </header>
   );
