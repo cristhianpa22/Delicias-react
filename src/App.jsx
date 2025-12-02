@@ -11,6 +11,7 @@ function App() {
  const [isOpenCarrito, openModalCarrito, closeModalCarrito] = useModal();
   return (
     <>
+         
 
 
       <BrowserRouter>
