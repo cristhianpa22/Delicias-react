@@ -1,1 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:wght@300;400;500&display=swap');
+
 @import "tailwindcss";
+
+@layer components{
+    .card{
+        flex: 0 0 5em;
+        width: 8em;
+        height: 8em;
+        padding: 1em;
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .path{
+        clip-path: circle(79.0% at 79% 50%);
+    }
+             
+     .brand-name {
+          font-family: 'Cinzel', serif;
+          letter-spacing: 0.15em;
+        }
+        
+     .hero-title {
+          font-family: 'Cinzel', serif;
+          letter-spacing: 0.05em;
+        }
+        
+    .gradient-overlay {
+          background: linear-gradient(135deg, rgba(255, 248, 245, 0.95) 0%, rgba(252, 241, 237, 0.9) 100%);
+        }
+}
+@theme {
+  --animate-spin: spin 5s infinite linear ;
+  @keyframes spin {
+    from{translate:0;}
+    to{translate:-100%;}
+  }
+  --font-family:'hello_valentica';
+}
+@font-face { 
+  --font-family: 'hello_valentica';
+    src: url('src/assets/fonts/hello_valentica/Hello Valentina.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
