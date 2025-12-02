@@ -1,36 +1,31 @@
 {
-    "users":[
-        {
-            "id": 1,
-            "user": "esteban",
-            "password": "1245",
-            "role": "admin"
-        },
-        {
-            "id": 2,
-            "user": "Roderick",
-            "password": "1246",
-            "role": "user"
-        }
-    ],
     "productos":[
         {
             "id": 1,
             "nombre": "Pasteles",
+            "descripcion": "Deliciosos pasteles artesanales",
             "precio": 20000,
-            "stock": 100
+            "categoria": "Reposteria",
+            "stock": 100,
+            "img": "pasteles.jpg"
         },
         {
             "id": 2,
             "nombre": "Galletas",
+            "descripcion": "Deliciosas galletas caseras",
             "precio": 35000,
-            "stock": 50
+            "categoria": "Reposteria",
+            "stock": 50,
+            "img": "galletas.jpg"
         },
         {
             "id": 3,
             "nombre": "Postres",
+            "descripcion": "Variedad de postres tradicionales",
             "precio": 60000,
-            "stock": 30
+            "categoria": "Reposteria",
+            "stock": 30,
+            "img": "postres.jpg"
         }
     ]
 }

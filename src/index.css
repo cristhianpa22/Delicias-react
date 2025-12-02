@@ -47,3 +47,28 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+  font-family: 'hello_valentica';
+  src: url('./assets/fonts/hello_valentica/Hello\ Valentina.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'kg_perfect_penmanship';
+  src: url('./assets/fonts/kg_perfect_penmanship/KGPerfectPenmanship.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font-hello {
+  font-family: 'hello_valentica', sans-serif;
+}
+
+.font-perfect {
+  font-family: 'kg_perfect_penmanship', sans-serif;
+}
+
+body {
+  background: radial-gradient(circle, rgba(235, 202, 206, 0.87) 0%, rgba(236, 220, 185, 0.62) 100%);
+}
