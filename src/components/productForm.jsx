@@ -12,7 +12,7 @@ export default function ProductForm({
         precio: "",
         categoria: "",
         stock: "",
-        imagen: "",
+        img: "",
     } }) {
     const [values, setValues] = useState(initialData);
     const [error, setError] = useState({});
@@ -43,8 +43,8 @@ export default function ProductForm({
         if (!valores.stock || isNaN(valores.stock) || !Number.isInteger(Number(valores.stock)) || Number(valores.stock) < 0) {
             errors.stock = "El stock debe ser un número entero no negativo.";
         }
-        if (!valores.imagen.trim()) {
-            errors.imagen = "La URL de la imagen es obligatoria.";
+        if (!valores.img.trim()) {
+            errors.img = "La URL de la imagen es obligatoria.";
         }
         return errors;
     }
@@ -60,7 +60,7 @@ export default function ProductForm({
             if (error[name] && !currentErrors[name]) {
                 const newErrors = { ...error };
                 delete newErrors[name];
-                setError(Object.keys(newErrors).length > 0 ? newErrors : null);
+                setError(Object.keys(newErrors).length > 0 ? newErrors : {});
             }
         }
     }
@@ -72,17 +72,18 @@ export default function ProductForm({
             setError(validationErrors);
             return;
         }
-        setError(null);
-        setSubmitting(true);
+
+        setError({});
+
         try {
             setSubmitting(true);
             const payload = {
-                name: values.nombre.trim(),
-                description: values.descripcion.trim(),
-                price: parseFloat(values.precio),
-                category: values.categoria,
+                nombre: values.nombre.trim(),
+                descripcion: values.descripcion.trim(),
+                precio: parseFloat(values.precio),
+                categoria: values.categoria,
                 stock: parseInt(values.stock, 10),
-                imageUrl: values.imagen.trim(),
+                img: values.img.trim(),
             };
             const result = await onSubmit?.(payload);
             setSuccessMessage("Producto enviado exitosamente.");
@@ -107,8 +108,8 @@ export default function ProductForm({
                 className="space-y-6"
             >
 
-                {submitError && <Alerta variant="error">{submitError}</Alerta>}
-                {successMessage && <Alerta variant="success">{successMessage}</Alerta>}
+                {submitError && <Alert variant="error">{submitError}</Alert>}
+                {successMessage && <Alert variant="success">{successMessage}</Alert>}
 
 
                 <div className="relative ">
@@ -116,7 +117,7 @@ export default function ProductForm({
                         htmlFor="producto-nombre"
                         className="block text-sm font-semibold text-pink-700 mb-1"
                     >
-                        Nombre del Producto <span className="text-red-500">Requerido</span>
+                        Nombre del Producto <span className="text-red-500">*</span>
                     </label>
                     <input
                         id="producto-nombre"
@@ -124,12 +125,12 @@ export default function ProductForm({
                         type="text"
                         required
                         autoFocus
-                        value={values.nombre}
+                        value = {values.nombre}
                         onChange={handleChange}
                         placeholder="Ej: Tarta de Chocolate"
                         aria-invalid={Boolean(error.nombre)}
                         aria-describedby={error.nombre ? "error-nombre" : undefined}
-                        className={`w-full p-3 bg-white rounded-lg border focus:ring-pink-500 focus:border-pink-500 text-amber-900 transition shadow-sm
+                        className={`w-full p-3 rounded-lg border focus:ring-pink-500 focus:border-pink-500 text-amber-900 transition shadow-sm
                         ${error.nombre
                                 ? "border-red-500  focus:ring-2 focus:ring-red-500"
                                 : "border-pink-200 focus:ring-2 focus:ring-amber-500 "
@@ -138,7 +139,7 @@ export default function ProductForm({
                     />
                     {error.nombre && (
                         <p
-                            id="error-title"
+                            id="error-nombre"
                             className="text-red-500 text-xs mt-1 absolute -bottom-5 left-0"
                             role="alert"
                         >
@@ -152,7 +153,7 @@ export default function ProductForm({
                         htmlFor="producto-descripcion"
                         className="block text-sm font-semibold text-pink-700 mb-1"
                     >
-                        Descripcion <span className="text-red-500">Requerido</span>
+                        Descripcion <span className="text-red-500">*</span>
                     </label>
                     <input
                         id="producto-descripcion"
@@ -187,12 +188,12 @@ export default function ProductForm({
                         htmlFor="producto-precio"
                         className="block text-sm font-semibold text-pink-700 mb-1"
                     >
-                        Precio <span className="text-red-500">Requerido</span>
+                        Precio <span className="text-red-500">*</span>
                     </label>
                     <input
                         id="producto-precio"
                         name="precio"
-                        type="number"
+                        type="text"
                         required
                         value={values.precio}
                         onChange={handleChange}
@@ -222,7 +223,7 @@ export default function ProductForm({
                         htmlFor="producto-categoria"
                         className="block text-sm font-semibold text-pink-700 mb-1"
                     >
-                        Tipo de Producto <span className="text-red-500">Requerido</span>
+                        Tipo de Producto <span className="text-red-500">*</span>
                     </label>
                     <select
                         id="producto-categoria"
@@ -243,7 +244,7 @@ export default function ProductForm({
                             selecciona una categoría
                         </option>
                         {categories.map((t) => (
-                            <option key={t} value={t}>
+                            <option key={t} value={t} className="bg-pink-200 text-fuchsia-950">
                                 {t}
                             </option>
                         ))}
@@ -264,16 +265,16 @@ export default function ProductForm({
                         htmlFor="producto-stocks"
                         className="block text-sm font-semibold text-pink-700 mb-1"
                     >
-                        Stocks <span className="text-red-500">Requerido</span>
+                        Stocks <span className="text-red-500">*</span>
                     </label>
                     <input
-                        id="producto-precio"
-                        name="precio"
-                        type="number"
+                        id="producto-stock"
+                        name="stock"
+                        type="text"
                         required
                         value={values.stock}
                         onChange={handleChange}
-                        placeholder="Ej: Queen"
+                        placeholder="Ej: 100"
                         aria-invalid={Boolean(error.stock)}
                         aria-describedby={error.stock ? "error-stock" : undefined}
                         disabled={submitting}
@@ -303,23 +304,29 @@ export default function ProductForm({
                     </label>
                     <input
                         id="producto-imagen"
-                        name="imagen"
+                        name="img"
                         type="text"
                         required
-                        value={values.imagen}
+                        value={values.img}
                         onChange={handleChange}
                         placeholder="Ej: url de la imagen"
-                        aria-invalid={Boolean(error.imagen)}
-                        aria-describedby={error.imagen ? "error-imagen" : undefined}
+                        aria-invalid={Boolean(error.img)}
+                        aria-describedby={error.img ? "error-img" : undefined}
                         disabled={submitting}
                         className={`w-full p-3 rounded-lg border focus:ring-pink-500 focus:border-pink-500 text-amber-900 transition  shadow-sm
-                        ${error.imagen
+                        ${error.img
                                 ? "border-red-500  focus:ring-2 focus:ring-red-500"
                                 : "border-pink-200 focus:ring-2 focus:ring-amber-500 "
                             }`}
                     />
-                    {error.imagen && (
-                        <Alert variant="error">{error.imagen}</Alert>
+                    {error.img && (
+                       <p
+                            id="error-stock"
+                            className="text-red-400 text-xs mt-1 absolute -bottom-5 left-0"
+                            role="alert"
+                        >
+                            {error.img}
+                        </p>
                         
                     )}
                 </div>
