@@ -46,6 +46,7 @@ export default function Table({products,onUpdateProduct,onDeleteProduct}){
                     <th className="px-6 py-4 text-left text-sm font-serif text-rose-900">PRECIO</th>
                     <th className="px-6 py-4 text-left text-sm font-serif text-rose-900">CATEGORIA</th>
                     <th className="px-6 py-4 text-left text-sm font-serif text-rose-900">STOCK</th>
+                    <th className="px-6 py-4 text-left text-sm font-serif text-rose-900">IMAGEN</th>
                     <th className="px-6 py-4 text-left text-sm font-serif text-rose-900">ACCIONES</th>
                 </tr>
             </thead>
@@ -110,6 +111,14 @@ export default function Table({products,onUpdateProduct,onDeleteProduct}){
                                         className="w-full px-3 py-1 border border-rose-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-400"
                                     />
                                 </td>
+                                 <td className="px-6 py-4">
+                                    <input
+                                        type="text"
+                                        value={editForm.img}
+                                        onChange={(e) => setEditForm({...editForm, img: e.target.value})}
+                                        className="w-full px-3 py-1 border border-rose-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-400"
+                                    />
+                                </td>
 
                                 <td className="px-6 py-4">
                           <div className="flex justify-end gap-2">
@@ -136,6 +145,7 @@ export default function Table({products,onUpdateProduct,onDeleteProduct}){
                                 <td className="px-6 py-4 text-center text-sm font-serif text-rose-900">{formatCurrency(producto.precio)}</td>
                                 <td className="px-6 py-4 text-center text-sm font-serif text-rose-900">{producto.categoria}</td>
                                 <td className="px-6 py-4 text-center text-sm font-serif text-rose-900">{producto.stock}</td>
+                                <td className="px-6 py-4 text-center text-sm font-serif text-rose-900">{producto.img}</td>
                                 <td className="px-6 py-4 text-center text-sm font-serif text-rose-900"><button onClick={() => startEdit(producto)} className="m-2"><i className="fa-solid fa-pen-to-square"></i></button>
                                 <button onClick={() => deleteItem(producto.id)}><i className="fa-solid fa-trash-can"></i></button></td>
                             </>

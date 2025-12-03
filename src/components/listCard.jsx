@@ -1,7 +1,8 @@
 
 import Alert from "./alert"
+import Card from "./card";
 
-export default function productList({ products = [], children }) {
+export default function ProductList({ products = [], children }) {
     const isEmpty = !products || products.length === 0;
     return (
         <section aria-label="Listado de Productos de Pastelería" 
@@ -22,11 +23,11 @@ export default function productList({ products = [], children }) {
                     className="space-y-4 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 "
                 >
 
-                    {products.map((item) => (
+                    {products.map((pasteles) => (
                         <li className="transition  duration-300 rounded-xl shadow-md hover:shadow-lg border border-pink-100 bg-white" 
-                        key={item.id} 
+                        key={pasteles.id} 
                         role="listitem">
-                            <ProductCard product={item} />
+                            <Card pasteles={pasteles} />
                         </li>
                     ))}
                 </ul>

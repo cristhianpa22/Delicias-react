@@ -24,8 +24,8 @@ export default function ProductForm({
         if (!valores.nombre.trim()) {
             errors.nombre = "El nombre es obligatorio.";
         }
-        else if (valores.nombre.trim().length < 4) {
-            errors.nombre = "El nombre debe tener al menos 4 caracteres.";
+        else if (valores.nombre.trim().length < 3) {
+            errors.nombre = "El nombre debe tener al menos 3 caracteres.";
         }
 
         if (!valores.descripcion.trim()) {
@@ -45,6 +45,9 @@ export default function ProductForm({
         }
         if (!valores.img.trim()) {
             errors.img = "La URL de la imagen es obligatoria.";
+        }
+        else if (!/^(https?:\/\/[^\s$.?#].[^\s]*)\.(jpe?g|png|gif|svg|webp|avif)$/i.test(valores.img.trim())) {
+            errors.img = "Por favor ingrese una URL de imagen válida (jpg, png, gif, svg, webp, avif).";
         }
         return errors;
     }
@@ -90,6 +93,7 @@ export default function ProductForm({
             setValues(initialData);
             onSuccess?.(result ?? payload);
         } catch (error) {
+            console.log(error);
             setSuccessMessage(null);
             setError({ submit: submitError || "Error al enviar el producto." });
         } finally {
@@ -300,7 +304,7 @@ export default function ProductForm({
                         htmlFor="producto-imagen"
                         className="block text-sm font-semibold text-pink-700 mb-1"
                     >
-                        imagen <span className="text-red-500">Requerido</span>
+                        imagen <span className="text-red-500">*</span>
                     </label>
                     <input
                         id="producto-imagen"
