@@ -4,6 +4,7 @@ import Alert from "../components/alert";
 import { useEffect, useState } from "react";
 import Modal from "../components/Modal";
 import Hero from "../components/hero";
+import ProductList from "../components/listCard";
 
 export default function ProductTienda( { isOpenCarrito, closeModalCarrito } ) {
     const [products, setProducts] = useState([]);
@@ -39,7 +40,9 @@ export default function ProductTienda( { isOpenCarrito, closeModalCarrito } ) {
                 <h2>productos</h2>
                 
             </Modal>
+
             <Hero />
+            <ProductList products={products} />
 
         </div>
     );

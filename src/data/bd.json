@@ -7,7 +7,7 @@
       "precio": 20000,
       "categoria": "Galletas",
       "stock": 5,
-      "img": "pasteles.jpg"
+      "img": "src/assets/images/pastelDefresa.jpg"
     },
     {
       "id": "2",
@@ -16,7 +16,7 @@
       "precio": 35000,
       "categoria": "Reposteria",
       "stock": 50,
-      "img": "galletas.jpg"
+      "img": "src/assets/images/galletas.jpg"
     },
     {
       "id": "3",
@@ -25,7 +25,7 @@
       "precio": 60000,
       "categoria": "Reposteria",
       "stock": 30,
-      "img": "postres.jpg"
+      "img": "src/assets/images/Cupcakes.jpg"
     }
   ]
 }
