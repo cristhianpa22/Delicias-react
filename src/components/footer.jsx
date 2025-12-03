@@ -66,7 +66,7 @@ export default function Footer() {
               <img src="./src/assets/images/social-instagram-svgrepo-com.svg" className="w-10" alt="instagram" />
             </a>
 
-            <a href="#" className="hover:scale-110 transition">
+            <a href="https://github.com/cristhianpa22/Delicias-react.git" className="hover:scale-110 transition">
               <img src="./src/assets/images/social-github-svgrepo-com.svg" className="w-10" alt="gitHub" />
             </a>
           </div>

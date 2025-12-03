@@ -6,7 +6,7 @@
       "descripcion": "Deliciosos pasteles artesanales",
       "precio": 20000,
       "categoria": "Galletas",
-      "stock": "5",
+      "stock": 5,
       "img": "pasteles.jpg"
     },
     {
