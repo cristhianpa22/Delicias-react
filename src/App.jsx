@@ -6,7 +6,6 @@ import Footer from "./components/footer.jsx";
 import useModal from "./hooks/useModal.js";
 import Carrusel from "./components/carrusel.jsx";
 
-
 function App() {
 
   const [isOpenCarrito, openModalCarrito, closeModalCarrito] = useModal();
