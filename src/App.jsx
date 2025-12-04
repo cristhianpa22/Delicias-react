@@ -5,6 +5,8 @@ import Header from "./components/header.jsx";
 import Footer from "./components/footer.jsx";
 import useModal from "./hooks/useModal.js";
 import Carrusel from "./components/carrusel.jsx";
+import VistaLogin from "./pages/login.jsx";
+
 
 function App() {
 
@@ -16,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<ProductTienda isOpenCarrito={isOpenCarrito} closeModalCarrito={closeModalCarrito} />} />
           <Route path="/dashboard" element={<DashBoard />} />
+          <Route path="/login" element={<VistaLogin />} />
         </Routes>
         <Carrusel />
         <Footer />
