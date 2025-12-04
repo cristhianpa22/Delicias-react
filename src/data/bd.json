@@ -26,6 +26,24 @@
       "categoria": "Reposteria",
       "stock": 30,
       "img": "src/assets/images/Cupcakes.jpg"
+    },
+    {
+      "id": "ef3f",
+      "nombre": "34567",
+      "descripcion": "4567ertyui",
+      "precio": 45678,
+      "categoria": "Galletas",
+      "stock": 20,
+      "img": "https://quickygirlrecipes.com/wp-content/uploads/2024/11/u5624346551_httpss.mj_.runkQNwp0S4uIg_Mini_Cheesecake_Recipe_w_a54bf085-004c-4485-bf35-e77465324f17_1-min-1024x574.png"
+    },
+    {
+      "id": "1b51",
+      "nombre": "natilla",
+      "descripcion": "ghjklñ{222",
+      "precio": 10000,
+      "categoria": "Galletas",
+      "stock": 222,
+      "img": "https://quickygirlrecipes.com/wp-content/uploads/2024/11/u5624346551_httpss.mj_.runkQNwp0S4uIg_Mini_Cheesecake_Recipe_w_a54bf085-004c-4485-bf35-e77465324f17_1-min-1024x574.png"
     }
   ]
 }
