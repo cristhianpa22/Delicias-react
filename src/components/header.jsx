@@ -8,21 +8,6 @@ export default function Header({ openModalCarrito }) {
 
   const Location = useLocation();
 
-  const isLoginPath = Location.pathname.startsWith('/login');
-  const isDashboardPath = Location.pathname.startsWith('/dashboard');
-
-
-  const navLinkTo = isLoginPath ? '/' : isDashboardPath ? '/' : '/login';
-  const navLinkText = isLoginPath ? 'Tienda' : isDashboardPath ? 'Cerrar Sesión' : 'Iniciar Sesión';
-
-  const handleActionClick = () => {
-    if (menuOpen) {
-      setMenuOpen(false);
-    }
-    else if (!menuOpen) {
-      setMenuOpen(true);
-    }
-  };
   return (
 
     <header className="w-full flex items-center justify-center mt-4 mb-6 px-4 relative">

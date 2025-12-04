@@ -1,4 +1,3 @@
-
 import Alert from "./alert"
 import Card from "./card";
 
@@ -20,11 +19,11 @@ export default function ProductList({ products = [], children }) {
             ) : (
                 <ul
                     role="list"
-                    className="space-y-4 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 "
+                    className="md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 "
                 >
 
                     {products.map((pasteles) => (
-                        <li className="transition  duration-300 rounded-xl shadow-md hover:shadow-lg border border-pink-100 bg-white" 
+                        <li className="transition duration-300 rounded-xl shadow-md hover:shadow-lg border border-pink-100 bg-white" 
                         key={pasteles.id} 
                         role="listitem">
                             <Card pasteles={pasteles} />
