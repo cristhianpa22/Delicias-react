@@ -9,8 +9,6 @@ export default function Header( {openModalCarrito }) {
   const navLinkTo = isAdminPath ? '/' : '/dashboard';
   const navLinkText = isAdminPath ? 'Tienda' : 'Admin';
 
-
-
   return (
 
     <header className="w-full flex items-center justify-center mt-4 mb-6">

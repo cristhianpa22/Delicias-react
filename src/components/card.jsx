@@ -15,7 +15,7 @@ export default function Card ({pasteles}) {
   return (
     <section
       aria-label="Productos disponibles"
-      className="grid gap-4 w-full "
+      className="grid gap-4 w-full"
     >
       <article
         data-id="p01"
@@ -25,7 +25,7 @@ export default function Card ({pasteles}) {
         className="bg-[#FFFFFF] font-perfect rounded-[14px] overflow-hidden shadow-[0_6px_18px_rgba(20,20,20,0.06)] flex flex-col"
       >
         <img
-          src={img ||"src/assets/"} 
+          src={img} 
           alt={nombre}
           className="h-[250px] w-full object-cover"
         />

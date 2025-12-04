@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Modal from "../components/Modal";
 import Hero from "../components/hero";
 import ProductList from "../components/listCard";
+import CardShop from "../components/cardShop";
 
 export default function ProductTienda( { isOpenCarrito, closeModalCarrito } ) {
     const [products, setProducts] = useState([]);
@@ -36,9 +37,8 @@ export default function ProductTienda( { isOpenCarrito, closeModalCarrito } ) {
             
             {loading && <Loading text="Cargando la lista de dulces pasteles..." />}
             {error && <Alert variant="error">{error}</Alert>}
-            <Modal title="Carrito de compras" isOpen={isOpenCarrito} onClose={closeModalCarrito}>
-                <h2>productos</h2>
-                
+            <Modal title="CARRITO DE COMPRAS" isOpen={isOpenCarrito} onClose={closeModalCarrito}>
+                <CardShop/>
             </Modal>
 
             <Hero />
