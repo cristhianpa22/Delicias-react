@@ -1,21 +1,21 @@
 import "../index.css"
-export default function Card ({pasteles}) {
-    const{nombre, descripcion, precio,categoria, img} = pasteles;
+export default function Card({ pasteles }) {
+    const { nombre, descripcion, precio, categoria, img } = pasteles;
 
-   const formatCurrency = (valor) => {
+    const formatCurrency = (valor) => {
         const numero = Number(valor) || 0;
-            // Usa toLocaleString() con configuración de Colombia
-            return numero.toLocaleString('es-CO', {
-                style: 'currency',
-                currency: 'COP',
-                minimumFractionDigits: 0  // Sin decimales (los pesos no usan centavos)
-            });
+        // Usa toLocaleString() con configuración de Colombia
+        return numero.toLocaleString('es-CO', {
+            style: 'currency',
+            currency: 'COP',
+            minimumFractionDigits: 0  // Sin decimales (los pesos no usan centavos)
+        });
     };
 
   return (
     <section
       aria-label="Productos disponibles"
-      className="grid gap-4 w-full "
+      className="grid gap-4 w-full"
     >
       <article
         data-id="p01"
@@ -25,7 +25,7 @@ export default function Card ({pasteles}) {
         className="bg-[#FFFFFF] font-perfect rounded-[14px] overflow-hidden shadow-[0_6px_18px_rgba(20,20,20,0.06)] flex flex-col"
       >
         <img
-          src={img ||"src/assets/"} 
+          src={img} 
           alt={nombre}
           className="h-[250px] w-full object-cover"
         />
@@ -49,7 +49,7 @@ export default function Card ({pasteles}) {
               data-action="add"
             >
               Agregar al carrito
-            </button>
+            </button>           
           </div>
         </div>
       </article>

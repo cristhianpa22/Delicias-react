@@ -24,13 +24,13 @@
           letter-spacing: 0.15em;
         }
         
-     .hero-title {
+     .hero-title {  
           font-family: 'Cinzel', serif;
           letter-spacing: 0.05em;
         }
         
     .gradient-overlay {
-          background: linear-gradient(135deg, rgba(255, 248, 245, 0.95) 0%, rgba(252, 241, 237, 0.9) 100%);
+          background: linear-gradient(135deg, rgba(255, 248, 245, 0.562) 0%, rgba(252, 241, 237, 0.9) 100%);
         }
 }
 @theme {
@@ -62,7 +62,6 @@
 .font-perfect {
   font-family: 'kg_perfect_penmanship', sans-serif;
 }
-
-body {
-  background: radial-gradient(circle, rgba(235, 202, 206, 0.87) 0%, rgba(236, 220, 185, 0.62) 100%);
+header{
+  margin: 0;
 }

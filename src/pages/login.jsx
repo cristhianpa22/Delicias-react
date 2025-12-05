@@ -1,7 +1,6 @@
 import Login from "../components/formLogin";
-
-export default function vistaLogin(){
+export default function VistaLogin(){
     return(
-        <Login/>
+            <Login />
     )
 }

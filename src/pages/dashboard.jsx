@@ -13,15 +13,7 @@ export default function DashBoard() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [isOpen, openModal, closeModal] = useModal();
-
-
-
-
     const [submitError, setSubmitError] = useState(null);
-
-
-
-
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -47,8 +39,8 @@ export default function DashBoard() {
         try {
             const created = await createProduct(product);
             setProducts(prev => [...prev, created]); // añadir al array existente
-            +           setSubmitError(null); // limpiar posible error previo
-            +           closeModal();
+            setSubmitError(null); // limpiar posible error previo
+            closeModal();
         } catch (err) {
             console.error(err);
             setSubmitError("Failed to create product");

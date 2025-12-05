@@ -1,4 +1,3 @@
-
 import Alert from "./alert"
 import Card from "./card";
 
@@ -6,10 +5,10 @@ export default function ProductList({ products = [], children }) {
     const isEmpty = !products || products.length === 0;
     return (
         <section aria-label="Listado de Productos de Pastelería" 
-        className="space-y-6 p-4">
+        className="space-y-6 p-8 ">
 
             {children && (
-                <div className="flex flex-wrap items-center gap-4 border-b border-pink-100 pb-4">{children}</div>
+                <div className="flex flex-wrap items-center gap-4 border-b pb-4">{children}</div>
             )}
 
             {isEmpty ? (
@@ -20,11 +19,11 @@ export default function ProductList({ products = [], children }) {
             ) : (
                 <ul
                     role="list"
-                    className="space-y-4 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 "
+                    className="md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 "
                 >
 
                     {products.map((pasteles) => (
-                        <li className="transition  duration-300 rounded-xl shadow-md hover:shadow-lg border border-pink-100 bg-white" 
+                        <li className="transition duration-300 rounded-xl shadow-md hover:shadow-lg border border-pink-100" 
                         key={pasteles.id} 
                         role="listitem">
                             <Card pasteles={pasteles} />

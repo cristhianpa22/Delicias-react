@@ -5,26 +5,53 @@
       "nombre": "Pasteles",
       "descripcion": "Deliciosos pasteles artesanales",
       "precio": 20000,
-      "categoria": "Galletas",
-      "stock": 5,
-      "img": "src/assets/images/pastelDefresa.jpg"
+      "categoria": "Reposteria",
+      "stock": 50,
+      "img": "src/assets/images/PastelDeCeresa.jpg"
     },
     {
       "id": "2",
       "nombre": "Galletas",
       "descripcion": "Deliciosas galletas caseras",
-      "precio": 35000,
+      "precio": 3500,
       "categoria": "Reposteria",
       "stock": 50,
       "img": "src/assets/images/galletas.jpg"
     },
     {
       "id": "3",
-      "nombre": "Postres",
-      "descripcion": "Variedad de postres tradicionales",
-      "precio": 60000,
+      "nombre": "Waffles",
+      "descripcion": "Waffles con toppings",
+      "precio": 10000,
       "categoria": "Reposteria",
       "stock": 30,
+      "img": "src/assets/images/Waffles.jpg"
+    },
+    {
+      "id": "4",
+      "nombre": "Roles Red Velvet",
+      "descripcion": "Deliciosos Roles Red Velvet",
+      "precio": 20000,
+      "categoria": "Panaderia",
+      "stock": 20,
+      "img": "src/assets/images/RolesDeCanelaConRedVelvet.jpg"
+    },
+    {
+      "id": "5",
+      "nombre": "Mil Hojas",
+      "descripcion": "Deliciosas Mil Hojas con Frambuesas caseras",
+      "precio": 10000,
+      "categoria": "Panaderia",
+      "stock": 10,
+      "img": "src/assets/images/milhojaConFrambuesa.jpg"
+    },
+    {
+      "id": "6",
+      "nombre": "CupCakes",
+      "descripcion": "Deliciosos CupCakes tradicionales",
+      "precio": 8000,
+      "categoria": "Reposteria",
+      "stock": 15,
       "img": "src/assets/images/Cupcakes.jpg"
     }
   ]
