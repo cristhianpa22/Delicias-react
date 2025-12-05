@@ -2,7 +2,7 @@ export default function Hero() {
     return (
         <>
 
-            <div className="bg-gradient-to-br from-stone-50 to-rose-50">
+            <div className="bg-linear-to-br from-stone-50 to-rose-50">
                 <div className="relative min-h-screen flex items-center overflow-hidden">
                     
                     <div className="absolute inset-0 z-0">
