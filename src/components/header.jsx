@@ -8,13 +8,28 @@ export default function Header({ openModalCarrito }) {
 
   const Location = useLocation();
 
+  const isLoginPath = Location.pathname.startsWith('/login');
+  const isDashboardPath = Location.pathname.startsWith('/dashboard');
+
+
+  const navLinkTo = isLoginPath ? '/' : isDashboardPath ? '/' : '/login';
+  const navLinkText = isLoginPath ? 'Tienda' : isDashboardPath ? 'Cerrar Sesión' : 'Iniciar Sesión';
+
+  const handleActionClick = () => {
+    if (menuOpen) {
+      setMenuOpen(false);
+    }
+    else if (!menuOpen) {
+      setMenuOpen(true);
+    }
+  };
   return (
 
-    <header className="w-full flex items-center justify-center mt-4 mb-6 px-4 relative">
+    <header className="w-full flex items-center justify-center p-8 mb-6 px-4 relative">
       <div
         className="
           w-full max-w-[1400px]
-          bg-[#daacb23a]
+          bg-[#f4edf275]
           border border-[#daacb269]
           rounded-2xl
           h-auto md:h-[120px]
@@ -26,12 +41,12 @@ export default function Header({ openModalCarrito }) {
         {/* TITULOS */}
         <div className="flex flex-col flex-1">
           <h1 className="text-2xl sm:text-4xl font-hello font-bold flex items-baseline gap-1 sm:gap-2">
-            <span className="font-[kg_perfect_penmanship] text-white drop-shadow-sm">
+            <span className="font-perfect text-white drop-shadow-sm">
               Pastelería
             </span>
 
             <span className="text-[#6a1a57] font-extrabold tracking-wide">
-              Sweet Tentation
+              Delicias React
             </span>
           </h1>
 
@@ -40,11 +55,11 @@ export default function Header({ openModalCarrito }) {
           </p>
         </div>
 
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-6 ">
           {/* Navegacion */}
           <Link
             to={navLinkTo}
-            className="text-lg font-bold text-[#6a1a57] 
+            className="text-lg font-perfect font-bold text-[#6a1a57] 
             hover:text-[#F37950] transition-colors
             cursor-pointer"
           >
@@ -59,11 +74,12 @@ export default function Header({ openModalCarrito }) {
               px-5 py-3
               shadow-md
               hover:scale-105 transition-transform
+              cursor-pointer
             "
             onClick={openModalCarrito}
           >
             <img
-              src="./src/assets/images/carrito.gif" className="w-6 opacity-90"
+              src="./src/assets/images/carrito.gif" className="w-6 opacity-90 "
               alt="Carrito de compras"
             />
             <span
@@ -75,7 +91,7 @@ export default function Header({ openModalCarrito }) {
                 px-[7px] py-[1px]
               "
             >
-              4
+              0
             </span>
           </button>}
         </div>

@@ -2,51 +2,53 @@ export default function Hero() {
     return (
         <>
 
-            <div className="bg-gradient-to-br from-stone-50 to-rose-50">
+            <div className="">
                 <div className="relative min-h-screen flex items-center overflow-hidden">
                     
                     <div className="absolute inset-0 z-0">
                         <img
-                            src="src/assets/images/ChescakeDeFrutosRojos.jpg"
+                            src="src/assets/images/textura.jpg"
                             alt="Luxury pastries"
-                            className="w-full h-full object-cover opacity-40"
+                            className="w-full h-full object-cover opacity-80"
                         />
                         <div className="absolute inset-0 gradient-overlay"></div>
                     </div>
 
                     
-                    <div className="absolute top-10 right-10 w-64 h-64 bg-rose-200 rounded-full opacity-20 blur-3xl"></div>
-                    <div className="absolute bottom-10 left-10 w-96 h-96 bg-amber-200 rounded-full opacity-20 blur-3xl"></div>
+                    <div className="absolute top-25 left-55 w-150 h-50 bg-[#e0bacf] rounded-full opacity-30 blur-2xl"></div>
+                    <div className="absolute bottom-30 left-50 w-96 h-96 bg-[#F6BC59] rounded-full opacity-20 blur-3xl"></div>
 
                     
                     <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-12 grid lg:grid-cols-2 gap-12 items-center">
                        
                         <div className="space-y-8">
-                            
-                            <div className="brand-name text-rose-800 text-sm tracking-widest font-hello_valentica ">
-                                Delicias React
-                            </div>
-
-                           
+                         
                             <div className="space-y-6">
-                                <h1 className="hero-title text-5xl lg:text-6xl font-hello_valentica text-stone-700 leading-tight">
+                                <h1 className="hero-title text-5xl lg:text-6xl font-perfect text-[#6B6B6B] leading-tight">
                                     ELEGANCIA<br />
-                                    <span className="text-rose-700">EN CADA BOCADO.</span><br />
+                                    <span className="text-[#A8176F]">EN CADA BOCADO.</span><br />
                                     <span className="text-4xl lg:text-5xl">ALTA PASTELERÍA,</span><br />
-                                    <span className="text-amber-700">REFINADA Y SUBLIME.</span>
+                                    <span className="text-[#F4425A]">REFINADA Y SUBLIME.</span>
                                 </h1>
                             </div>
 
                             
                             <div className="flex flex-col sm:flex-row gap-4 pt-4">
                                 <button
-                                    
-                                    className="flex items-center justify-center gap-3 px-8 py-4 border-2 border-rose-700 text-rose-700 hover:bg-rose-700 hover:text-white font-medium transition-all hover:-translate-y-0.5 hover:shadow-lg"
+                                  className="
+                                    w-fit px-10 py-4 
+                                    rounded-xl font-semibold 
+                                    border-2 border-[#1E9D8A]
+                                    text-[#1E9D8A]
+                                    bg-[#dbe9e792]
+                                    shadow-[0_6px_18px_rgba(168,23,111,0.12)]
+                                    hover:bg-[#1E9D8A] hover:text-white
+                                    hover:-translate-y-[2px]
+                                    transition-all
+                                  "
                                 >
-                                    
-                                    EXPLORAR COLECCIÓN
+                                  EXPLORAR COLECCIÓN
                                 </button>
-
                                 
                             </div>
                         </div>
@@ -61,16 +63,6 @@ export default function Hero() {
                                 />
                             </div>
 
-                            
-                            <div className="absolute -top-6 -right-6 w-32 h-32 opacity-80">
-                                <img
-                                    src="src/assets/images/TortaDeHeladoConGalleta.jpg"
-                                    alt="Orchid"
-                                    className="w-full h-full object-contain"
-                                />
-                            </div>
-
-                            {/* Floating Elements */}
                             
                         </div>
                     </div>

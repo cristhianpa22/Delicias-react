@@ -13,8 +13,37 @@ export default function CardShop() {
           CARRITO
         </h2>
 
-        <div className="min-h-[200px] max-h-[420px] flex items-center justify-center">
-          <p className="text-[#7c6c7c] italic">Tu carrito esta vaco</p>
+        <div className="min-h-[200px] max-h-[420px] ">
+          <p className="text-[#7c6c7c] italic">Tu carrito esta vacio</p>
+
+        <section className="border-2 border-[#f5b7c0] border-dashed w-full h-auto flex flex-col sm:flex-row p-3 gap-4">
+
+          <div className="flex-shrink-0">
+            <img
+              className="w-[70px] h-[70px] rounded-2xl border-[#f5b7c0] border-2"
+              src="src/assets/images/flan.jpg"
+              alt=""
+            />
+          </div>
+
+          <div className="flex flex-col justify-between w-full">
+            <h2 className="text-[#000] font-bold text-sm sm:text-base">Nombre del producto</h2>
+
+            <div className="flex flex-col sm:flex-row sm:justify-between gap-3">
+              <p className="text-sm sm:text-base">Precio</p>
+
+              <div className="flex gap-4 pr-0 sm:pr-6">
+                <p className="w-6 h-6 rounded-[6px] bg-[#fff] flex items-center justify-center cursor-pointer">+</p>
+                <span>0</span>
+                <p className="w-6 h-6 rounded-[6px] bg-[#fff] flex items-center justify-center cursor-pointer">-</p>
+                <p className="text-[#a90101] cursor-pointer">Eliminar</p>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
         </div>
 
         <div className="mt-5">

@@ -12,7 +12,7 @@ function App() {
 
   const [isOpenCarrito, openModalCarrito, closeModalCarrito] = useModal();
   return (
-    <section className="bg-rose-100">
+    <section className="bg-[radial-gradient(circle,_rgba(235,202,206,0.87)_0%,_rgba(236,220,185,0.62)_100%)]">
       <BrowserRouter>
         <Header openModalCarrito={openModalCarrito} />
         <Routes>
