@@ -1,7 +1,10 @@
 import { useState } from "react";
+import Alert from "./alert.jsx";
+
 const categories = ["Tartas", "Galletas", "Cupcakes", "Bebidas"];
 
-export default function Table({ products, onUpdateProduct, onDeleteProduct }) {
+
+export default function Table({ products, onUpdateProduct, onDeleteProduct, submitError, successMessage}) {
 
     const [editingId, setEditingId] = useState(null);
     const [editForm, setEditForm] = useState({});
@@ -19,12 +22,11 @@ export default function Table({ products, onUpdateProduct, onDeleteProduct }) {
 
     const saveEdit = () => {
         onUpdateProduct(editingId, editForm);
-        setEditingId(null);
-        setEditForm({});
+        cancelEdit();
     };
 
     const deleteItem = (id) => {
-        onDeleteProduct(id);
+        onDeleteProduct(id); 
     };
     const formatCurrency = (valor) => {
         const numero = Number(valor) || 0;
@@ -38,6 +40,8 @@ export default function Table({ products, onUpdateProduct, onDeleteProduct }) {
 
     return (
         <div className="w-full my-6 px-4 overflow-x-auto">
+            {successMessage && <Alert variant="success">{successMessage}</Alert>}
+            {submitError && <Alert variant="error">{submitError}</Alert>}
             <table className="table-auto border-collapse border border-rose-200 min-w-full ">
                 <thead className="p-5">
                     <tr className="bg-gradient-to-r from-rose-50 to-pink-50 border-b border-rose-200">

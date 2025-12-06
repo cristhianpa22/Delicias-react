@@ -7,13 +7,13 @@ import ProductForm from "../components/productForm";
 import useModal from "../hooks/useModal";
 import Table from "../components/table";
 
-
 export default function DashBoard() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [isOpen, openModal, closeModal] = useModal();
     const [submitError, setSubmitError] = useState(null);
+    const [successMessage, setSuccessMessage] = useState("");
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -24,7 +24,7 @@ export default function DashBoard() {
                 setProducts(data);
             } catch (err) {
                 console.error(err);
-                setError("Failed to fetch products");
+                setError("Error al cargar los productos");
             } finally {
                 setLoading(false);
             }
@@ -38,22 +38,38 @@ export default function DashBoard() {
         try {
             const created = await createProduct(product);
             setProducts(prev => [...prev, created]); // añadir al array existente
-            setSubmitError(null); // limpiar posible error previo
+            setSubmitError(null); // limpiar posible error previ
+            setSuccessMessage("Producto creado con éxito.");
             closeModal();
+
         } catch (err) {
             console.error(err);
-            setSubmitError("Failed to create product");
+            setSubmitError("Error al crear el producto");
         }
+        finally {
+            setTimeout(() => {
+                setSuccessMessage();
+                setSubmitError();
+            },5000);
+
+        }
+
     }
     async function handleUpdateProduct(id, product) {
         try {
             const updated = await updateProduct(id, product);
             setProducts(prev => prev.map(p => p.id === id ? updated : p));
             setSubmitError(null);
-            closeModal();
+            setSuccessMessage("Producto actualizado con éxito.");
         } catch (err) {
             console.error(err);
-            setSubmitError("Failed to update product");
+            setSubmitError("Error al actualizar el producto");
+        }
+        finally {
+            setTimeout(() => {
+                setSuccessMessage();
+                setSubmitError();
+            },5000);
         }
     }
     async function handleDeleteProduct(id) {
@@ -61,9 +77,16 @@ export default function DashBoard() {
             await removeProduct(id);
             setProducts(prev => prev.filter(p => p.id !== id));
             setSubmitError(null);
+            setSuccessMessage("Producto eliminado con éxito.");
         } catch (err) {
             console.error(err);
-            setSubmitError("Failed to delete product");
+            setSubmitError("Error al eliminar el producto");
+        }
+        finally{
+            setTimeout(() => {
+                setSuccessMessage();
+                setSubmitError();
+            },5000);
         }
     }
 
@@ -93,7 +116,7 @@ export default function DashBoard() {
 
 
 
-                    <Table products={products} onUpdateProduct={handleUpdateProduct} onDeleteProduct={handleDeleteProduct} />
+                    <Table products={products} onUpdateProduct={handleUpdateProduct} onDeleteProduct={handleDeleteProduct} submitError={submitError} successMessage={successMessage} />
                     <div className="mt-6 text-center text-rose-700 text-sm italic">
                         {products.length} productos en el catálogo
                     </div>

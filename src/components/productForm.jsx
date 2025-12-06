@@ -17,7 +17,6 @@ export default function ProductForm({
     const [values, setValues] = useState(initialData);
     const [error, setError] = useState({});
     const [submitting, setSubmitting] = useState(false);
-    const [successMessage, setSuccessMessage] = useState("");
 
     function validar(valores) {
         const errors = {};
@@ -89,12 +88,10 @@ export default function ProductForm({
                 img: values.img.trim(),
             };
             const result = await onSubmit?.(payload);
-            setSuccessMessage("Producto enviado exitosamente.");
             setValues(initialData);
             onSuccess?.(result ?? payload);
         } catch (error) {
             console.log(error);
-            setSuccessMessage(null);
             setError({ submit: submitError || "Error al enviar el producto." });
         } finally {
             setSubmitting(false);
@@ -111,11 +108,7 @@ export default function ProductForm({
                 onSubmit={handleSubmit}
                 className="space-y-6"
             >
-
                 {submitError && <Alert variant="error">{submitError}</Alert>}
-                {successMessage && <Alert variant="success">{successMessage}</Alert>}
-
-
                 <div className="relative ">
                     <label
                         htmlFor="producto-nombre"
@@ -343,7 +336,6 @@ export default function ProductForm({
                         onClick={() => {
                             setValues(initialData);
                             setError({});
-                            setSuccessMessage(null);
                         }}
                         className="rounded-lg border border-pink-300 px-4 py-2 text-sm text-pink-700 hover:bg-pink-100 focus:outline-none focus:ring-2 focus:ring-amber-500 transition"
                         disabled={submitting}
