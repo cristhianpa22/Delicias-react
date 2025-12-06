@@ -1,8 +1,19 @@
+import { useNavigate } from 'react-router-dom';
+
 export default function Hero() {
+
+    const navigate = useNavigate();
+
+    const handleLogin = (e) => {
+        e.preventDefault();
+        navigate('/login');
+      };
     return (
         <>
 
+
             <div className="">
+                
                 <div className="relative min-h-screen flex items-center overflow-hidden">
                     
                     <div className="absolute inset-0 z-0">
@@ -46,6 +57,7 @@ export default function Hero() {
                                     hover:-translate-y-[2px]
                                     transition-all
                                   "
+                                  onClick={handleLogin}
                                 >
                                   EXPLORAR COLECCIÓN
                                 </button>

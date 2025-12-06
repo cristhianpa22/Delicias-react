@@ -1,11 +1,28 @@
 import '../index.css';
+import { useCart } from '../hooks/useCart';
+import Alert from "../components/alert"
 
-export default function CardShop() {
+export default function CardShop({opencar}) {
+
+  const {cartItems,increaseQuantity,decreaseQuantity,removeFromCart,subTotal, clearCart }= useCart();
+
+  
+
+  const formatCurrency = (valor) => {
+    const numero = Number(valor) || 0;
+    // Usa toLocaleString() con configuración de Colombia
+    return numero.toLocaleString('es-CO', {
+        style: 'currency',
+        currency: 'COP',
+        minimumFractionDigits: 0  // Sin decimales (los pesos no usan centavos)
+    });
+};
+
   return (
     <aside className="
         font-perfect bg-[#f4e9edcc] border-4 border-[#f4e9ed90]
-        rounded-[18px] p-6 h-fit
-        shadow-[0_8px_20px_rgba(129,53,99,0.10)]
+        rounded-[18px] p-6 h-full
+        shadow-[0_8px_20px_rgba(129,53,99,0.10)] 
       "
     >
       <div className="cart-inner">
@@ -13,44 +30,57 @@ export default function CardShop() {
           CARRITO
         </h2>
 
-        <div className="min-h-[200px] max-h-[420px] ">
-          <p className="text-[#7c6c7c] italic">Tu carrito esta vacio</p>
+        <div className="min-h-[200px] max-h-[420px] overflow-y-auto">
+          {
+          cartItems <= 0 &&  
+          <Alert>
+            <p className="text-[#7c6c7c] italic">El horno esta vacio, trae harina </p>
+            </Alert>
+          }
+          <ul className='max-h-[400px] scroll-auto"'>
 
-        <section className="border-2 border-[#f5b7c0] border-dashed w-full h-auto flex flex-col sm:flex-row p-3 gap-4">
+            {cartItems.map((cart) => (
+              <li key={cart.id}>
 
-          <div className="flex-shrink-0">
-            <img
-              className="w-[70px] h-[70px] rounded-2xl border-[#f5b7c0] border-2"
-              src="src/assets/images/flan.jpg"
-              alt=""
-            />
-          </div>
+                <section className="border-2 border-[#f5b7c0] border-dashed w-full flex flex-col sm:flex-row p-3 gap-4">
 
-          <div className="flex flex-col justify-between w-full">
-            <h2 className="text-[#000] font-bold text-sm sm:text-base">Nombre del producto</h2>
+                  <div className="flex-shrink-0">
+                    <img
+                      className="w-[70px] h-[70px] rounded-2xl border-[#f5b7c0] border-2"
+                      src={cart.img}
+                      alt=""
+                    />
+                  </div>
 
-            <div className="flex flex-col sm:flex-row sm:justify-between gap-3">
-              <p className="text-sm sm:text-base">Precio</p>
+                  <div className="flex flex-col justify-between w-full">
+                    <h2 className="text-[#000] font-bold text-sm sm:text-base">{cart.nombre}</h2>
 
-              <div className="flex gap-4 pr-0 sm:pr-6">
-                <p className="w-6 h-6 rounded-[6px] bg-[#fff] flex items-center justify-center cursor-pointer">+</p>
-                <span>0</span>
-                <p className="w-6 h-6 rounded-[6px] bg-[#fff] flex items-center justify-center cursor-pointer">-</p>
-                <p className="text-[#a90101] cursor-pointer">Eliminar</p>
-              </div>
-            </div>
+                    <div className="flex flex-col sm:flex-row sm:justify-between gap-3">
+                      <p className="text-sm sm:text-base">{formatCurrency(cart.precio)}</p>
 
-          </div>
+                      <div className="flex gap-4 pr-0 sm:pr-6">
+                        <p className="w-6 h-6 rounded-[6px] bg-[#fff] flex items-center justify-center cursor-pointer" onClick={()=>increaseQuantity(cart.id)}>+</p>
+                        <span>{cart.quantity}</span>
+                        <p className="w-6 h-6 rounded-[6px] bg-[#fff] flex items-center justify-center cursor-pointer" onClick={()=>decreaseQuantity(cart.id)}>-</p>
+                        <p className="text-[#a90101] cursor-pointer" onClick={()=>removeFromCart(cart.id)}>Eliminar</p>
+                      </div>
+                    </div>
 
-        </section>
+                  </div>
+
+                </section>
+              </li>
+            ))
+            }
+          </ul>
 
         </div>
 
-        <div className="mt-5">
-          
+        <div className="mt-10">
+
           <div className="text-[#6B6B6B] mb-4 flex justify-between text-lg">
             <span>Subtotal</span>
-            <strong className="text-[#813563]">$0</strong>
+            <strong className="text-[#813563]">{formatCurrency(subTotal)}</strong>
           </div>
 
           <div className="flex flex-col gap-3">
@@ -64,6 +94,8 @@ export default function CardShop() {
                 hover:bg-[#f5c9d1]
                 shadow-[0_3px_8px_rgba(244,150,170,0.18)]
               "
+              onClick={clearCart}
+              disabled={cartItems.length === 0}
             >
               Vaciar carrito
             </button>
@@ -77,12 +109,16 @@ export default function CardShop() {
                 hover:bg-[#6a1a57]
                 hover:shadow-[0_6px_18px_rgba(129,53,99,0.45)]
               "
+              disabled={cartItems.length === 0}
+            
+              onClick={opencar}
             >
               Pagar
             </button>
 
           </div>
         </div>
+
       </div>
     </aside>
   );

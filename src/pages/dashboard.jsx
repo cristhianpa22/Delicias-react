@@ -21,7 +21,6 @@ export default function DashBoard() {
                 setLoading(true);
                 setError(null);
                 const data = await getProducts();
-                console.log(data);
                 setProducts(data);
             } catch (err) {
                 console.error(err);

@@ -1,9 +1,15 @@
 import Alert from "./alert"
 import Card from "./card";
+import { useCart } from "../hooks/useCart";
+
 
 export default function ProductList({ products = [], children }) {
     const isEmpty = !products || products.length === 0;
+    
+
+
     return (
+     <cardProvider>
         <section aria-label="Listado de Productos de Pastelería" 
         className="space-y-6 p-8 ">
 
@@ -32,5 +38,6 @@ export default function ProductList({ products = [], children }) {
                 </ul>
             )}
         </section>
+        </cardProvider>
     );
 }
