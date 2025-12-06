@@ -2,7 +2,7 @@
 import axios from "axios";
 
 // ---- Config ----
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "https://693493604090fe3bf020476a.mockapi.io/api/v1/";
 if (!BASE_URL) {
   console.warn(
     "API base URL is not set. Please configure the BASE_URL variable."
