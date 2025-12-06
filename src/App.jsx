@@ -6,13 +6,16 @@ import Footer from "./components/footer.jsx";
 import useModal from "./hooks/useModal.js";
 import Carrusel from "./components/carrusel.jsx";
 import VistaLogin from "./pages/login.jsx";
+import CardProvider from "./context/Cart.jsx"
 
 
 function App() {
 
   const [isOpenCarrito, openModalCarrito, closeModalCarrito] = useModal();
+
   return (
     <section className="bg-[radial-gradient(circle,_rgba(235,202,206,0.87)_0%,_rgba(236,220,185,0.62)_100%)]">
+      <CardProvider>
       <BrowserRouter>
         <Header openModalCarrito={openModalCarrito} />
         <Routes>
@@ -23,6 +26,7 @@ function App() {
         <Carrusel />
         <Footer />
       </BrowserRouter>
+      </CardProvider>
     </section>
 
   )

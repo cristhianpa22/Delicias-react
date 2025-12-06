@@ -31,7 +31,7 @@
       "id": "4",
       "nombre": "Roles Red Velvet",
       "descripcion": "Deliciosos Roles Red Velvet",
-      "precio": 20000,
+      "precio": "20500",
       "categoria": "Panaderia",
       "stock": 20,
       "img": "src/assets/images/RolesDeCanelaConRedVelvet.jpg"
