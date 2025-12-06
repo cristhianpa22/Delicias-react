@@ -1,10 +1,13 @@
 import '../index.css'
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useCart } from '../hooks/useCart';
 
 export default function Header({ openModalCarrito }) {
 
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const  {cartItems}  = useCart();
 
   const Location = useLocation();
 
@@ -91,7 +94,7 @@ export default function Header({ openModalCarrito }) {
                 px-[7px] py-[1px]
               "
             >
-              0
+              {cartItems.length}
             </span>
           </button>}
         </div>
@@ -140,7 +143,7 @@ export default function Header({ openModalCarrito }) {
               alt="Carrito de compras"
             />
             <span className="absolute -top-1 -right-1 bg-[#F37950] text-white text-xs font-bold rounded-full px-[5px] py-[1px]">
-              4
+              {cartItems.length}
             </span>
           </button>
         )}
