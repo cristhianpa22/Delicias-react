@@ -1,5 +1,5 @@
-import ProducTiendaContainer from "./pages/ProducTiendaContainer.jsx";
-import DashBoard from "./pages/Dashboard.jsx";
+import ProductTiendaContainer from "./pages/ProducTiendaContainer.jsx";
+import DashBoardContainer from "./pages/DashBoardContainer.jsx";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import HeaderContainer from "./components/HeaderContainer.jsx";
 import Footer from "./components/Footer.jsx";
@@ -7,7 +7,6 @@ import useModal from "./hooks/useModal.js";
 import Carrusel from "./components/Carrusel.jsx";
 import VistaLogin from "./pages/Login.jsx";
 import CardProvider from "./context/Cart.jsx"
-import ProductTiendaContainer from "./pages/ProducTiendaContainer.jsx";
 
 
 function App() {
@@ -21,7 +20,7 @@ function App() {
         <HeaderContainer openModalCarrito={openModalCarrito}/>
         <Routes>
           <Route path="/" element={<ProductTiendaContainer isOpenCarrito={isOpenCarrito} closeModalCarrito={closeModalCarrito} />} />
-          <Route path="/dashboard" element={<DashBoard />} />
+          <Route path="/dashboard" element={<DashBoardContainer />} />
           <Route path="/login" element={<VistaLogin />} />
         </Routes>
         <Carrusel />

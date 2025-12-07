@@ -7,3 +7,5 @@ export const formatCurrency = (valor) => {
         minimumFractionDigits: 0  // Sin decimales (los pesos no usan centavos)
     });
 };
+
+export const categories = ["Tartas", "Galletas", "Cupcakes", "Bebidas", "Reposteria", "Panaderia"];

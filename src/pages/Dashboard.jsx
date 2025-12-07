@@ -1,94 +1,21 @@
 import Loading from "../components/Loading";
 import Alert from "../components/Alert";
-import { getProducts, createProduct, updateProduct, removeProduct } from "../services/productApi";
-import { useEffect, useState } from "react";
 import Modal from "../components/Modal";
-import ProductForm from "../components/ProductForm";
-import useModal from "../hooks/useModal";
 import Table from "../components/Table";
+import ProductFormContainer from "../components/ProductFormContainer";
 
-export default function DashBoard() {
-    const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const [isOpen, openModal, closeModal] = useModal();
-    const [submitError, setSubmitError] = useState(null);
-    const [successMessage, setSuccessMessage] = useState("");
-
-    useEffect(() => {
-        const fetchProducts = async () => {
-            try {
-                setLoading(true);
-                setError(null);
-                const data = await getProducts();
-                setProducts(data);
-            } catch (err) {
-                console.error(err);
-                setError("Error al cargar los productos");
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchProducts();
-    }, []);
-
-    async function handleAddProduct(product) {
-
-        try {
-            const created = await createProduct(product);
-            setProducts(prev => [...prev, created]); // añadir al array existente
-            setSubmitError(null); // limpiar posible error previ
-            setSuccessMessage("Producto creado con éxito.");
-            closeModal();
-
-        } catch (err) {
-            console.error(err);
-            setSubmitError("Error al crear el producto");
-        }
-        finally {
-            setTimeout(() => {
-                setSuccessMessage();
-                setSubmitError();
-            },5000);
-
-        }
-
-    }
-    async function handleUpdateProduct(id, product) {
-        try {
-            const updated = await updateProduct(id, product);
-            setProducts(prev => prev.map(p => p.id === id ? updated : p));
-            setSubmitError(null);
-            setSuccessMessage("Producto actualizado con éxito.");
-        } catch (err) {
-            console.error(err);
-            setSubmitError("Error al actualizar el producto");
-        }
-        finally {
-            setTimeout(() => {
-                setSuccessMessage();
-                setSubmitError();
-            },5000);
-        }
-    }
-    async function handleDeleteProduct(id) {
-        try {
-            await removeProduct(id);
-            setProducts(prev => prev.filter(p => p.id !== id));
-            setSubmitError(null);
-            setSuccessMessage("Producto eliminado con éxito.");
-        } catch (err) {
-            console.error(err);
-            setSubmitError("Error al eliminar el producto");
-        }
-        finally{
-            setTimeout(() => {
-                setSuccessMessage();
-                setSubmitError();
-            },5000);
-        }
-    }
+export default function DashBoard(
+    {products,
+    loading,
+    error,
+    isOpen,
+    submitError,
+    successMessage,
+    openModal,
+    closeModal,
+    onAddProduct,
+    onUpdateProduct,
+    onDeleteProduct}) {
 
     return (
         <div className=" bg-gradient-to-br from-rose-50 via-pink-50 to-amber-50 p-8">
@@ -99,7 +26,7 @@ export default function DashBoard() {
                     <h1 className="text-4xl font-serif text-rose-900 mb-2">Gestión de Productos</h1>
                     <p className="text-rose-700 italic">Pastelería Artesanal</p>
                     <Modal title="Agregar Nuevo Producto" isOpen={isOpen} onClose={closeModal}>
-                        <ProductForm onSubmit={handleAddProduct} submitError={submitError} />
+                        <ProductFormContainer onSubmit={onAddProduct} submitError={submitError} />
                     </Modal>
                 </div>
                 <div className="bg-white/80 backdrop-blur rounded-2xl shadow-xl overflow-hidden border border-rose-100">
@@ -116,7 +43,7 @@ export default function DashBoard() {
 
 
 
-                    <Table products={products} onUpdateProduct={handleUpdateProduct} onDeleteProduct={handleDeleteProduct} submitError={submitError} successMessage={successMessage} />
+                    <Table products={products} onUpdateProduct={onUpdateProduct} onDeleteProduct={onDeleteProduct} submitError={submitError} successMessage={successMessage} />
                     <div className="mt-6 text-center text-rose-700 text-sm italic">
                         {products.length} productos en el catálogo
                     </div>

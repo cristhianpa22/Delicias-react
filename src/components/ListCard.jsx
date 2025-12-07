@@ -16,7 +16,7 @@ export default function ProductList({ products = [], children }) {
         className="space-y-6 p-8 ">
 
             {children && (
-                <div className="flex flex-wrap items-center gap-4 border-b pb-4">{children}</div>
+                <div className="flex flex-wrap items-center gap-4 border-b border-[#6B6B6B] pb-4">{children}</div>
             )}
 
             {isEmpty ? (

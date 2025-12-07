@@ -1,6 +1,6 @@
 import '../index.css';
 import Alert from "./Alert"
-import { formatCurrency } from '../utils/formartCurrency';
+import { formatCurrency } from '../utils/utilitis';
 
 export default function CardShop({opencar,cartItems,increaseQuantity,decreaseQuantity,removeFromCart,subTotal, clearCart}){
 
