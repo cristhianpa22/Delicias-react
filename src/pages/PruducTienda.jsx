@@ -5,31 +5,28 @@ import Modal from "../components/Modal";
 import Hero from "../components/Hero";
 import ProductList from "../components/ListCard";
 import CardShop from "../components/CardShop";
-import { formatCurrency } from "../utils/formartCurrency"
+import { formatCurrency } from "../utils/utilitis"
 
 
+export default function ProductTienda({
+    product,
+    loading,
+    error,
+    filters,
+    categorie,
+    subTotal,
 
-
-
-export default function ProductTienda({ 
-       product,
-        loading,
-        error,
-        filters,
-        categorie,
-        subTotal,
-        
-        isOpenCarrito,
-        isOpenTotal,
-        cartItems,
-        increaseQuantity,
-        decreaseQuantity,
-        removeFromCart,
-        onFliterChange,
-        onCloseCarrito,
-        onCloseVentaExitosa,
-        onCompra,
- }) {
+    isOpenCarrito,
+    isOpenTotal,
+    cartItems,
+    increaseQuantity,
+    decreaseQuantity,
+    removeFromCart,
+    onFliterChange,
+    onCloseCarrito,
+    onCloseVentaExitosa,
+    onCompra,
+}) {
     const handleSearchChange = (e) => {
         onFliterChange({
             ...filters,
@@ -44,11 +41,6 @@ export default function ProductTienda({
         });
     };
 
-
-
-
-    
-
     return (
 
         <div>
@@ -59,11 +51,11 @@ export default function ProductTienda({
 
             <Modal title="CARRITO DE COMPRAS" isOpen={isOpenCarrito} onClose={onCloseCarrito}>
                 <CardShop opencar={onCompra} cartItems={cartItems}
-        increaseQuantity={increaseQuantity}
-        decreaseQuantity={decreaseQuantity}
-        removeFromCart={removeFromCart}
-        subTotal={subTotal}
-        clearCart={onCloseVentaExitosa}  />
+                    increaseQuantity={increaseQuantity}
+                    decreaseQuantity={decreaseQuantity}
+                    removeFromCart={removeFromCart}
+                    subTotal={subTotal}
+                    clearCart={onCloseVentaExitosa} />
             </Modal>
 
             <Modal title="Venta exitosa" isOpen={isOpenTotal} onClose={onCloseVentaExitosa}>
@@ -95,7 +87,7 @@ export default function ProductTienda({
                         <span>¡Gracias por tu compra!</span>
                     </div>
                 </div>
-        
+
             </Modal >
 
             <Hero />
@@ -108,7 +100,7 @@ export default function ProductTienda({
                             placeholder="Buscar por nombre..."
                             value={filters.searchTerm}
                             onChange={handleSearchChange}
-                            className="w-full p-3 pl-10 bg-rose-100 border border-rose-300 focus:ring-rose-500 focus:border-rose-500 text-black transition"
+                            className="w-full p-3 pl-10 bg-rose-100 border-2 border-rose-500 rounded-2xl focus:ring-rose-500 focus:border-rose-500 text-black transition"
                             disabled={loading}
                         />
                         <i className="fa-solid fa-magnifying-glass absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"></i>
@@ -119,7 +111,7 @@ export default function ProductTienda({
                             id="category"
                             value={filters.category}
                             onChange={handleCategoryChange}
-                            className="w-full p-3 pl-10 bg-rose-100 border border-rose-300 focus:ring-rose-500 focus:border-rose-500 text-black transition"
+                            className="w-full p-3 pl-10 bg-rose-100 border-2 border-rose-500 rounded-2xl focus:ring-rose-500 focus:border-rose-500 text-black transition"
                         >
                             <option value="all">Todas las Categorías</option>
                             {categorie.map((category) => (
