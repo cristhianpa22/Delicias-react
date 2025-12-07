@@ -18,7 +18,7 @@ export default function Hero() {
                     
                     <div className="absolute inset-0 z-0">
                         <img
-                            src="src/assets/images/textura.jpg"
+                            src="../../public/images/textura.jpg"
                             alt="Luxury pastries"
                             className="w-full h-full object-cover opacity-80"
                         />
@@ -69,7 +69,7 @@ export default function Hero() {
                         <div className="relative">
                             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                                 <img
-                                    src="src/assets/images/RolesDeCanelaConRedVelvet.jpg"
+                                    src="../../public/images/RolesDeCanelaConRedVelvet.jpg"
                                     alt="Exquisite pastries and macarons"
                                     className="w-full h-auto object-cover"
                                 />
