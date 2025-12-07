@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Alert from "./alert.jsx";
+import Alert from "./Alert.jsx";
 
 const categories = ["Tartas", "Galletas", "Cupcakes", "Bebidas"];
 

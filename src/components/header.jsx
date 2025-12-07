@@ -1,31 +1,16 @@
 import '../index.css'
-import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { useCart } from '../hooks/useCart';
+import { Link } from 'react-router-dom';
 
-export default function Header({ openModalCarrito }) {
+export default function Header({ 
+  openModalCarrito,
+  cartItem,
+  menuOpen,
+  navLinkTo,
+  navLinkText,
+  handleActionClick
+}) {
 
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const  {cartItems}  = useCart();
-
-  const Location = useLocation();
-
-  const isLoginPath = Location.pathname.startsWith('/login');
-  const isDashboardPath = Location.pathname.startsWith('/dashboard');
-
-
-  const navLinkTo = isLoginPath ? '/' : isDashboardPath ? '/' : '/login';
-  const navLinkText = isLoginPath ? 'Tienda' : isDashboardPath ? 'Cerrar Sesión' : 'Iniciar Sesión';
-
-  const handleActionClick = () => {
-    if (menuOpen) {
-      setMenuOpen(false);
-    }
-    else if (!menuOpen) {
-      setMenuOpen(true);
-    }
-  };
+  
   return (
 
     <header className="w-full flex items-center justify-center p-8 mb-6 px-4 relative">
@@ -94,7 +79,7 @@ export default function Header({ openModalCarrito }) {
                 px-[7px] py-[1px]
               "
             >
-              {cartItems.length}
+              {cartItem.length}
             </span>
           </button>}
         </div>
@@ -143,7 +128,7 @@ export default function Header({ openModalCarrito }) {
               alt="Carrito de compras"
             />
             <span className="absolute -top-1 -right-1 bg-[#F37950] text-white text-xs font-bold rounded-full px-[5px] py-[1px]">
-              {cartItems.length}
+              {cartItem.length}
             </span>
           </button>
         )}

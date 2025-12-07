@@ -1,25 +1,26 @@
-import ProductTienda from "./pages/pruducTienda.jsx";
-import DashBoard from "./pages/dashboard.jsx";
+import ProducTiendaContainer from "./pages/ProducTiendaContainer.jsx";
+import DashBoard from "./pages/Dashboard.jsx";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Header from "./components/header.jsx";
-import Footer from "./components/footer.jsx";
+import HeaderContainer from "./components/HeaderContainer.jsx";
+import Footer from "./components/Footer.jsx";
 import useModal from "./hooks/useModal.js";
-import Carrusel from "./components/carrusel.jsx";
-import VistaLogin from "./pages/login.jsx";
+import Carrusel from "./components/Carrusel.jsx";
+import VistaLogin from "./pages/Login.jsx";
 import CardProvider from "./context/Cart.jsx"
+import ProductTiendaContainer from "./pages/ProducTiendaContainer.jsx";
 
 
 function App() {
 
-  const [isOpenCarrito, openModalCarrito, closeModalCarrito] = useModal();
+  const [isOpenCarrito,openModalCarrito, closeModalCarrito] = useModal();
 
   return (
     <section className="bg-[radial-gradient(circle,_rgba(235,202,206,0.87)_0%,_rgba(236,220,185,0.62)_100%)]">
       <CardProvider>
       <BrowserRouter>
-        <Header openModalCarrito={openModalCarrito} />
+        <HeaderContainer openModalCarrito={openModalCarrito}/>
         <Routes>
-          <Route path="/" element={<ProductTienda isOpenCarrito={isOpenCarrito} closeModalCarrito={closeModalCarrito} />} />
+          <Route path="/" element={<ProductTiendaContainer isOpenCarrito={isOpenCarrito} closeModalCarrito={closeModalCarrito} />} />
           <Route path="/dashboard" element={<DashBoard />} />
           <Route path="/login" element={<VistaLogin />} />
         </Routes>

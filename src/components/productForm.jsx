@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Alert from "./alert";
+import Alert from "./Alert";
 const categories = ["Tartas", "Galletas", "Cupcakes", "Bebidas"];
 
 export default function ProductForm({

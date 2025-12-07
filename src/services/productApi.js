@@ -1,8 +1,9 @@
 // src/services/animalsApi.js
 import axios from "axios";
 
+
 // ---- Config ----
-const BASE_URL = "https://693493604090fe3bf020476a.mockapi.io/api/v1/";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 if (!BASE_URL) {
   console.warn(
     "API base URL is not set. Please configure the BASE_URL variable."

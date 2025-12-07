@@ -1,84 +1,49 @@
-import { getProducts } from "../services/productApi";
 import { Check, Cookie, Cake } from 'lucide-react';
-import Loading from "../components/loading";
-import Alert from "../components/alert";
-import { useEffect, useState } from "react";
+import Loading from "../components/Loading";
+import Alert from "../components/Alert";
 import Modal from "../components/Modal";
-import Hero from "../components/hero";
-import ProductList from "../components/listCard";
-import CardShop from "../components/cardShop";
-import useModal from "../hooks/useModal"
-import { useCart } from "../hooks/useCart";
-
-const categories = ["Tartas", "Galletas", "Cupcakes", "Bebidas", "Reposteria", "Panaderia"];
+import Hero from "../components/Hero";
+import ProductList from "../components/ListCard";
+import CardShop from "../components/CardShop";
+import { formatCurrency } from "../utils/formartCurrency"
 
 
-export default function ProductTienda({ isOpenCarrito, closeModalCarrito }) {
-    const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const [filters, setFilters] = useState({
-       searchTerm: "",
-        category: "all"
-    })
 
-    const [isOpenTotal, openTotal, closeModalTotal] = useModal();
 
-    const {subTotal,clearCart}= useCart();
 
-    useEffect(() => {
-        const fetchProducts = async () => {
-            try {
-                setLoading(true);
-                setError(null);
-                const data = await getProducts();
-
-                setProducts(data);
-            } catch (err) {
-                console.error(err);
-                setError("Failed to fetch products");
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchProducts();
-    }, []);
-
-    const filteredProducts = (product) => {
-        return product.filter(product => {
-            return (
-                (filters.category === "all" || product.categoria.toLowerCase() === filters.category) &&
-                (filters.searchTerm === "" ||
-                    product.nombre.toLowerCase().includes(filters.searchTerm.toLowerCase()) ||
-                    product.descripcion.toLowerCase().includes(filters.searchTerm.toLowerCase()) ||
-                    product.precio.toString().toLowerCase().includes(filters.searchTerm.toLowerCase())
-
-                )
-            );
-        });
-    }
-    const filteredProductsList = filteredProducts(products);
-
-    const handleCloseVentaExitosa = () => {
-        closeModalTotal()
-        clearCart() 
-       // Limpiar el carrito al cerrar
-    }
-    const compra = () => {
-        closeModalCarrito()
-        openTotal()
-    
-    }
-    const formatCurrency = (valor) => {
-        const numero = Number(valor) || 0;
-        // Usa toLocaleString() con configuración de Colombia
-        return numero.toLocaleString('es-CO', {
-            style: 'currency',
-            currency: 'COP',
-            minimumFractionDigits: 0  // Sin decimales (los pesos no usan centavos)
+export default function ProductTienda({ 
+       product,
+        loading,
+        error,
+        filters,
+        categorie,
+        subTotal,
+        
+        isOpenCarrito,
+        isOpenTotal,
+        cartItems,
+        increaseQuantity,
+        decreaseQuantity,
+        removeFromCart,
+        onFliterChange,
+        onCloseCarrito,
+        onCloseVentaExitosa,
+        onCompra,
+ }) {
+    const handleSearchChange = (e) => {
+        onFliterChange({
+            ...filters,
+            searchTerm: e.target.value
         });
     };
+
+    const handleCategoryChange = (e) => {
+        onFliterChange({
+            ...filters,
+            category: e.target.value
+        });
+    };
+
 
 
 
@@ -92,11 +57,16 @@ export default function ProductTienda({ isOpenCarrito, closeModalCarrito }) {
             {error && <Alert variant="error">{error}</Alert>}
 
 
-            <Modal title="CARRITO DE COMPRAS" isOpen={isOpenCarrito} onClose={closeModalCarrito}>
-                <CardShop opencar={compra} />
+            <Modal title="CARRITO DE COMPRAS" isOpen={isOpenCarrito} onClose={onCloseCarrito}>
+                <CardShop opencar={onCompra} cartItems={cartItems}
+        increaseQuantity={increaseQuantity}
+        decreaseQuantity={decreaseQuantity}
+        removeFromCart={removeFromCart}
+        subTotal={subTotal}
+        clearCart={onCloseVentaExitosa}  />
             </Modal>
 
-            <Modal title="Venta exitosa" isOpen={isOpenTotal} onClose={handleCloseVentaExitosa}>
+            <Modal title="Venta exitosa" isOpen={isOpenTotal} onClose={onCloseVentaExitosa}>
                 <div className="bg-[#f4e9edcc] rounded-2xl shadow-2xl p-8 text-center transform animate-scale-in">
                     {/* Círculo de check animado */}
                     <div className="relative mx-auto mb-6">
@@ -129,7 +99,7 @@ export default function ProductTienda({ isOpenCarrito, closeModalCarrito }) {
             </Modal >
 
             <Hero />
-            <ProductList products={filteredProductsList} >
+            <ProductList products={product} >
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
                     <div className="relative">
@@ -137,7 +107,7 @@ export default function ProductTienda({ isOpenCarrito, closeModalCarrito }) {
                             type="text"
                             placeholder="Buscar por nombre..."
                             value={filters.searchTerm}
-                            onChange={(e) => setFilters({ ...filters, searchTerm: e.target.value })}
+                            onChange={handleSearchChange}
                             className="w-full p-3 pl-10 bg-rose-100 border border-rose-300 focus:ring-rose-500 focus:border-rose-500 text-black transition"
                             disabled={loading}
                         />
@@ -148,11 +118,11 @@ export default function ProductTienda({ isOpenCarrito, closeModalCarrito }) {
                         <select name="category"
                             id="category"
                             value={filters.category}
-                            onChange={(e) => setFilters({ ...filters, category: e.target.value })}
+                            onChange={handleCategoryChange}
                             className="w-full p-3 pl-10 bg-rose-100 border border-rose-300 focus:ring-rose-500 focus:border-rose-500 text-black transition"
                         >
                             <option value="all">Todas las Categorías</option>
-                            {categories.map((category) => (
+                            {categorie.map((category) => (
                                 <option key={category} value={category.toLowerCase()}>
                                     {category}
                                 </option>
@@ -162,6 +132,7 @@ export default function ProductTienda({ isOpenCarrito, closeModalCarrito }) {
                 </div>
 
             </ProductList >
+        </div>
 
     );
 

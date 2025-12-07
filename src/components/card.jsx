@@ -1,20 +1,11 @@
 import "../index.css"
-import { useCart } from "../hooks/useCart";
-export default function Card({ pasteles }) {
+import { formatCurrency } from "../utils/formartCurrency";
+export default function Card({ pasteles,onAddToCart }) {
     const { nombre, descripcion, precio, categoria, img } = pasteles;
-    const { addToCart} = useCart();
 
     
 
-    const formatCurrency = (valor) => {
-        const numero = Number(valor) || 0;
-        // Usa toLocaleString() con configuración de Colombia
-        return numero.toLocaleString('es-CO', {
-            style: 'currency',
-            currency: 'COP',
-            minimumFractionDigits: 0  // Sin decimales (los pesos no usan centavos)
-        });
-    };
+
 
   return (
     <section
@@ -49,7 +40,7 @@ export default function Card({ pasteles }) {
           <div className="mt-auto flex items-center justify-between gap-[0.5rem]">
             <span className="font-bold text-[#813563]">{formatCurrency(precio)}</span>
             <button
-            onClick={() => addToCart(pasteles)}
+            onClick={() => onAddToCart(pasteles)}
               className="bg-[#1E9D8A] text-white border-0 px-[0.7rem] py-[0.45rem] rounded-[8px] font-semibold cursor-pointer transition duration-200 ease-[cubic-bezier(.2,.9,.3,1)] hover:-translate-y-[2px] hover:shadow-[0_8px_20px_rgba(30,157,138,0.12)]"
               data-action="add"
             >

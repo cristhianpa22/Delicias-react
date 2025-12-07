@@ -63,6 +63,8 @@ export default function ProductTienda({ children }) {
         return total + (precio * item.quantity);
       }, 0);
 
+      
+
     return(
         <ProductContext.Provider value={{ cartItems, addToCart, increaseQuantity,decreaseQuantity,removeFromCart,subTotal,clearCart }} >
             {children}
