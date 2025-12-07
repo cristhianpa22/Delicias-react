@@ -1,42 +1,20 @@
+
+import Alert from "./Alert.jsx";
+import {formatCurrency} from "../utils/formartCurrency.js"
 import { useState } from "react";
 import Alert from "./Alert.jsx";
 
 const categories = ["Tartas", "Galletas", "Cupcakes", "Bebidas"];
 
 
-export default function Table({ products, onUpdateProduct, onDeleteProduct, submitError, successMessage}) {
+export default function Table({ products, submitError, successMessage,editingId,
+    editForm,
+    startEdit,
+    cancelEdit,
+    saveEdit,
+    deleteItem}) {
 
-    const [editingId, setEditingId] = useState(null);
-    const [editForm, setEditForm] = useState({});
 
-
-    const startEdit = (produc) => {
-        setEditingId(produc.id);
-        setEditForm(produc);
-    };
-
-    const cancelEdit = () => {
-        setEditingId(null);
-        setEditForm({});
-    };
-
-    const saveEdit = () => {
-        onUpdateProduct(editingId, editForm);
-        cancelEdit();
-    };
-
-    const deleteItem = (id) => {
-        onDeleteProduct(id); 
-    };
-    const formatCurrency = (valor) => {
-        const numero = Number(valor) || 0;
-        // Usa toLocaleString() con configuración de Colombia
-        return numero.toLocaleString('es-CO', {
-            style: 'currency',
-            currency: 'COP',
-            minimumFractionDigits: 0  // Sin decimales (los pesos no usan centavos)
-        });
-    };
 
     return (
         <div className="w-full my-6 px-4 overflow-x-auto">
@@ -72,7 +50,7 @@ export default function Table({ products, onUpdateProduct, onDeleteProduct, subm
                                         <input
                                             type="text"
                                             value={editForm.nombre}
-                                            onChange={(e) => setEditForm({ ...editForm, nombre: e.target.value })}
+                                            onChange={(e) => editForm({ ...editForm, nombre: e.target.value })}
                                             className="w-full px-3 py-1 border border-rose-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-400"
                                         />
                                     </td>
@@ -80,7 +58,7 @@ export default function Table({ products, onUpdateProduct, onDeleteProduct, subm
                                         <input
                                             type="text"
                                             value={editForm.descripcion}
-                                            onChange={(e) => setEditForm({ ...editForm, descripcion: e.target.value })}
+                                            onChange={(e) => editForm({ ...editForm, descripcion: e.target.value })}
                                             className="w-full px-3 py-1 border border-rose-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-400"
                                         />
                                     </td>
@@ -88,7 +66,7 @@ export default function Table({ products, onUpdateProduct, onDeleteProduct, subm
                                         <input
                                             type="text"
                                             value={editForm.precio}
-                                            onChange={(e) => setEditForm({ ...editForm, precio: e.target.value })}
+                                            onChange={(e) => editForm({ ...editForm, precio: e.target.value })}
                                             className="w-full px-3 py-1 border border-rose-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-400"
                                         />
                                     </td>
@@ -97,7 +75,7 @@ export default function Table({ products, onUpdateProduct, onDeleteProduct, subm
                                     <td>
                                         <select
                                             value={editForm.categoria}
-                                            onChange={(e) => setEditForm({ ...editForm, categoria: e.target.value })}
+                                            onChange={(e) => editForm({ ...editForm, categoria: e.target.value })}
                                             className="w-full px-3 py-1 border border-rose-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-400"
                                         >
                                             {categories.map((category) => (
@@ -112,7 +90,7 @@ export default function Table({ products, onUpdateProduct, onDeleteProduct, subm
                                         <input
                                             type="text"
                                             value={editForm.stock}
-                                            onChange={(e) => setEditForm({ ...editForm, stock: e.target.value })}
+                                            onChange={(e) => editForm({ ...editForm, stock: e.target.value })}
                                             className="w-full px-3 py-1 border border-rose-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-400"
                                         />
                                     </td>
@@ -120,7 +98,7 @@ export default function Table({ products, onUpdateProduct, onDeleteProduct, subm
                                         <input
                                             type="text"
                                             value={editForm.img}
-                                            onChange={(e) => setEditForm({ ...editForm, img: e.target.value })}
+                                            onChange={(e) => editForm({ ...editForm, img: e.target.value })}
                                             className="w-full px-3 py-1 border border-rose-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-400"
                                         />
                                     </td>

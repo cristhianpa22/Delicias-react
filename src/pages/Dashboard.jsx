@@ -1,7 +1,7 @@
 import Loading from "../components/Loading";
 import Alert from "../components/Alert";
 import Modal from "../components/Modal";
-import Table from "../components/Table";
+import TableContainer from "../components/TableContainer";
 import ProductFormContainer from "../components/ProductFormContainer";
 
 export default function DashBoard(
@@ -43,7 +43,7 @@ export default function DashBoard(
 
 
 
-                    <Table products={products} onUpdateProduct={onUpdateProduct} onDeleteProduct={onDeleteProduct} submitError={submitError} successMessage={successMessage} />
+                    <TableContainer products={products} onUpdateProduct={onUpdateProduct} onDeleteProduct={onDeleteProduct} submitError={submitError} successMessage={successMessage} />
                     <div className="mt-6 text-center text-rose-700 text-sm italic">
                         {products.length} productos en el catálogo
                     </div>
