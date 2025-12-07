@@ -18,7 +18,7 @@ export default function Hero() {
                     
                     <div className="absolute inset-0 z-0">
                         <img
-                            src="../../public/images/textura.jpg"
+                            src="/images/textura.jpg"
                             alt="Luxury pastries"
                             className="w-full h-full object-cover opacity-80"
                         />
