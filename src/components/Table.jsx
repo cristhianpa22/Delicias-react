@@ -1,11 +1,7 @@
 
 import Alert from "./Alert.jsx";
-import {formatCurrency} from "../utils/utilitis.js"
-import{categories} from "../utls/utilitis.js"
-import Alert from "./Alert.jsx";
-
-
-
+import {formatCurrency} from "../utils/utilitis.js";
+import{categories} from "../utils/utilitis.js";
 
 export default function Table({ products, submitError, successMessage,editingId,
     editForm,
