@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import Modal from "../components/Modal";
 import ProductForm from "../components/ProductForm";
 import useModal from "../hooks/useModal";
-import Table from "../components/Table";
+import TableContainer from "../components/TableContainer";
 
 export default function DashBoard() {
     const [products, setProducts] = useState([]);
@@ -116,7 +116,7 @@ export default function DashBoard() {
 
 
 
-                    <Table products={products} onUpdateProduct={handleUpdateProduct} onDeleteProduct={handleDeleteProduct} submitError={submitError} successMessage={successMessage} />
+                    <TableContainer products={products} onUpdateProduct={handleUpdateProduct} onDeleteProduct={handleDeleteProduct} submitError={submitError} successMessage={successMessage} />
                     <div className="mt-6 text-center text-rose-700 text-sm italic">
                         {products.length} productos en el catálogo
                     </div>
