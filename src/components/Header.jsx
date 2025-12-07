@@ -67,7 +67,7 @@ export default function Header({
             onClick={openModalCarrito}
           >
             <img
-              src="../../public/images/carrito.gif" className="w-6 opacity-90 "
+              src="/images/carrito.gif" className="w-6 opacity-90 "
               alt="Carrito de compras"
             />
             <span

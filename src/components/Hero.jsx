@@ -69,7 +69,7 @@ export default function Hero() {
                         <div className="relative">
                             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                                 <img
-                                    src="../../public/images/RolesDeCanelaConRedVelvet.jpg"
+                                    src="/images/RolesDeCanelaConRedVelvet.jpg"
                                     alt="Exquisite pastries and macarons"
                                     className="w-full h-auto object-cover"
                                 />

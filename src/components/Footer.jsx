@@ -59,7 +59,7 @@ export default function Footer() {
 
           <div className="flex md:justify-start justify-center space-x-6 text-xl">
             <a href="#" className="hover:scale-110 transition">
-              <img src="../../public/images/social-facebook-svgrepo-com.svg" className="w-10" alt="facebook" />
+              <img src="/images/social-facebook-svgrepo-com.svg" className="w-10" alt="facebook" />
             </a>
 
             <a href="#" className="hover:scale-110 transition">
@@ -67,7 +67,7 @@ export default function Footer() {
             </a>
 
             <a href="https://github.com/cristhianpa22/Delicias-react.git" className="hover:scale-110 transition">
-              <img src="../../public/images/social-github-svgrepo-com.svg" className="w-10" alt="gitHub" />
+              <img src="/images/social-github-svgrepo-com.svg" className="w-10" alt="gitHub" />
             </a>
           </div>
         </div>

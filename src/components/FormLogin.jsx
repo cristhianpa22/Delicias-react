@@ -18,7 +18,7 @@ export default function Login() {
         "
       >
         <img
-          src="../../public/images/login.sinfondo.png"
+          src="/images/login.sinfondo.png"
           alt="Imagen de login"
           className="
             absolute top-0 left-0 w-full h-full object-contain
