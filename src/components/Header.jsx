@@ -124,7 +124,7 @@ export default function Header({
             }}
           >
             <img
-              src="../../public/images/carrito.gif" className="w-6 opacity-90"
+              src="/images/carrito.gif" className="w-6 opacity-90"
               alt="Carrito de compras"
             />
             <span className="absolute -top-1 -right-1 bg-[#F37950] text-white text-xs font-bold rounded-full px-[5px] py-[1px]">
