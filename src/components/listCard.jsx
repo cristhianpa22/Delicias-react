@@ -1,10 +1,12 @@
-import Alert from "./alert"
-import Card from "./card";
+import Alert from "./Alert"
+import Card from "./Card";
 import { useCart } from "../hooks/useCart";
 
 
 export default function ProductList({ products = [], children }) {
     const isEmpty = !products || products.length === 0;
+
+    const {addToCart}=useCart();
     
 
 
@@ -32,7 +34,7 @@ export default function ProductList({ products = [], children }) {
                         <li className="transition duration-300 rounded-xl shadow-md hover:shadow-lg border border-pink-100" 
                         key={pasteles.id} 
                         role="listitem">
-                            <Card pasteles={pasteles} />
+                            <Card pasteles={pasteles} onAddToCart={addToCart} />
                         </li>
                     ))}
                 </ul>

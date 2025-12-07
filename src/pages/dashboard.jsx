@@ -1,11 +1,11 @@
-import Loading from "../components/loading";
-import Alert from "../components/alert";
+import Loading from "../components/Loading";
+import Alert from "../components/Alert";
 import { getProducts, createProduct, updateProduct, removeProduct } from "../services/productApi";
 import { useEffect, useState } from "react";
 import Modal from "../components/Modal";
-import ProductForm from "../components/productForm";
+import ProductForm from "../components/ProductForm";
 import useModal from "../hooks/useModal";
-import Table from "../components/table";
+import Table from "../components/Table";
 
 export default function DashBoard() {
     const [products, setProducts] = useState([]);

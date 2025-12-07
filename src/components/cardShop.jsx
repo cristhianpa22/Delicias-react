@@ -1,22 +1,8 @@
 import '../index.css';
-import { useCart } from '../hooks/useCart';
-import Alert from "../components/alert"
+import Alert from "./Alert"
+import { formatCurrency } from '../utils/formartCurrency';
 
-export default function CardShop({opencar}) {
-
-  const {cartItems,increaseQuantity,decreaseQuantity,removeFromCart,subTotal, clearCart }= useCart();
-
-  
-
-  const formatCurrency = (valor) => {
-    const numero = Number(valor) || 0;
-    // Usa toLocaleString() con configuración de Colombia
-    return numero.toLocaleString('es-CO', {
-        style: 'currency',
-        currency: 'COP',
-        minimumFractionDigits: 0  // Sin decimales (los pesos no usan centavos)
-    });
-};
+export default function CardShop({opencar,cartItems,increaseQuantity,decreaseQuantity,removeFromCart,subTotal, clearCart}){
 
   return (
     <aside className="
