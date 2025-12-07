@@ -1,5 +1,5 @@
 import "../index.css"
-import { formatCurrency } from "../utils/formartCurrency";
+import { formatCurrency } from "../utils/utilitis";
 export default function Card({ pasteles,onAddToCart }) {
     const { nombre, descripcion, precio, categoria, img } = pasteles;
 

@@ -2,20 +2,21 @@ import { getProducts } from "../services/productApi";
 import { useEffect, useState } from "react";
 import useModal from "../hooks/useModal"
 import { useCart } from "../hooks/useCart";
-import ProductTienda from "./pruducTienda";
+import ProductTienda from "./PruducTienda";
+import { categories } from "../utils/utilitis";
 
 
-const categories = ["Tartas", "Galletas", "Cupcakes", "Bebidas", "Reposteria", "Panaderia"];
 
-export default function ProductTiendaContainer({isOpenCarrito, closeModalCarrito}){
 
-    const{cartItems,increaseQuantity,decreaseQuantity,removeFromCart,subTotal, clearCart}=useCart();
+export default function ProductTiendaContainer({ isOpenCarrito, closeModalCarrito }) {
+
+    const { cartItems, increaseQuantity, decreaseQuantity, removeFromCart, subTotal, clearCart } = useCart();
 
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [filters, setFilters] = useState({
-       searchTerm: "",
+        searchTerm: "",
         category: "all"
     })
 
@@ -28,11 +29,17 @@ export default function ProductTiendaContainer({isOpenCarrito, closeModalCarrito
                 setLoading(true);
                 setError(null);
                 const data = await getProducts();
+                if (Array.isArray(data)) {
+                    setProducts(data);
+                } else {
+                    console.error("API did not return an array:", data);
+                    setError("Error al cargar los productos");
+                    setProducts([]); 
+                }
 
-                setProducts(data);
             } catch (err) {
                 console.error(err);
-                setError("Failed to fetch products");
+                setError("Error al cargar los productos");
             } finally {
                 setLoading(false);
             }
@@ -56,45 +63,45 @@ export default function ProductTiendaContainer({isOpenCarrito, closeModalCarrito
     }
     const filteredProductsList = filteredProducts(products);
 
-    const handleFilterChange=(newFilter)=>{
+    const handleFilterChange = (newFilter) => {
         setFilters(newFilter)
     }
 
 
     const handleCloseVentaExitosa = () => {
         closeModalTotal()
-        clearCart() 
-       // Limpiar el carrito al cerrar
+        clearCart()
+        // Limpiar el carrito al cerrar
     }
     const compra = () => {
         closeModalCarrito()
         openTotal()
-    
+
     }
-    
+
     return (
-        <ProductTienda 
-        product={filteredProductsList}
-        loading={loading}
-        error={error}
-        filters={filters}
-        categorie={categories}
-        subTotal={subTotal}
-        
-        isOpenCarrito={isOpenCarrito}
-        isOpenTotal={isOpenTotal}
+        <ProductTienda
+            product={filteredProductsList}
+            loading={loading}
+            error={error}
+            filters={filters}
+            categorie={categories}
+            subTotal={subTotal}
 
-        
-        cartItems={cartItems}
-        increaseQuantity={increaseQuantity}
-        decreaseQuantity={decreaseQuantity}
-        removeFromCart={removeFromCart}
+            isOpenCarrito={isOpenCarrito}
+            isOpenTotal={isOpenTotal}
 
-        onCloseCarrito={closeModalCarrito}
-        onFliterChange={handleFilterChange}
-        onCloseVentaExitosa={handleCloseVentaExitosa}
-        onCompra={compra}
+
+            cartItems={cartItems}
+            increaseQuantity={increaseQuantity}
+            decreaseQuantity={decreaseQuantity}
+            removeFromCart={removeFromCart}
+
+            onCloseCarrito={closeModalCarrito}
+            onFliterChange={handleFilterChange}
+            onCloseVentaExitosa={handleCloseVentaExitosa}
+            onCompra={compra}
         />
-        
+
     )
 }
