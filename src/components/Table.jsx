@@ -1,10 +1,10 @@
 
 import Alert from "./Alert.jsx";
-import {formatCurrency} from "../utils/formartCurrency.js"
-import { useState } from "react";
+import {formatCurrency} from "../utils/utilitis.js"
+import{categories} from "../utls/utilitis.js"
 import Alert from "./Alert.jsx";
 
-const categories = ["Tartas", "Galletas", "Cupcakes", "Bebidas"];
+
 
 
 export default function Table({ products, submitError, successMessage,editingId,
