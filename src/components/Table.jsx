@@ -6,6 +6,7 @@ import{categories} from "../utils/utilitis.js";
 export default function Table({ products, submitError, successMessage,editingId,
     editForm,
     startEdit,
+    setEditForm,
     cancelEdit,
     saveEdit,
     deleteItem}) {
@@ -46,7 +47,7 @@ export default function Table({ products, submitError, successMessage,editingId,
                                         <input
                                             type="text"
                                             value={editForm.nombre}
-                                            onChange={(e) => editForm({ ...editForm, nombre: e.target.value })}
+                                            onChange={(e) => setEditForm({ ...setEditForm, nombre: e.target.value })}
                                             className="w-full px-3 py-1 border border-rose-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-400"
                                         />
                                     </td>
@@ -54,7 +55,7 @@ export default function Table({ products, submitError, successMessage,editingId,
                                         <input
                                             type="text"
                                             value={editForm.descripcion}
-                                            onChange={(e) => editForm({ ...editForm, descripcion: e.target.value })}
+                                            onChange={(e) => setEditForm({ ...setEditForm, descripcion: e.target.value })}
                                             className="w-full px-3 py-1 border border-rose-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-400"
                                         />
                                     </td>
@@ -62,7 +63,7 @@ export default function Table({ products, submitError, successMessage,editingId,
                                         <input
                                             type="text"
                                             value={editForm.precio}
-                                            onChange={(e) => editForm({ ...editForm, precio: e.target.value })}
+                                            onChange={(e) => setEditForm({ ...setEditForm, precio: e.target.value })}
                                             className="w-full px-3 py-1 border border-rose-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-400"
                                         />
                                     </td>
@@ -71,7 +72,7 @@ export default function Table({ products, submitError, successMessage,editingId,
                                     <td>
                                         <select
                                             value={editForm.categoria}
-                                            onChange={(e) => editForm({ ...editForm, categoria: e.target.value })}
+                                            onChange={(e) => setEditForm({ ...setEditForm, categoria: e.target.value })}
                                             className="w-full px-3 py-1 border border-rose-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-400"
                                         >
                                             {categories.map((category) => (
@@ -86,7 +87,7 @@ export default function Table({ products, submitError, successMessage,editingId,
                                         <input
                                             type="text"
                                             value={editForm.stock}
-                                            onChange={(e) => editForm({ ...editForm, stock: e.target.value })}
+                                            onChange={(e) => setEditForm({ ...setEditForm, stock: e.target.value })}
                                             className="w-full px-3 py-1 border border-rose-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-400"
                                         />
                                     </td>
@@ -94,7 +95,7 @@ export default function Table({ products, submitError, successMessage,editingId,
                                         <input
                                             type="text"
                                             value={editForm.img}
-                                            onChange={(e) => editForm({ ...editForm, img: e.target.value })}
+                                            onChange={(e) => setEditForm({ ...setEditForm, img: e.target.value })}
                                             className="w-full px-3 py-1 border border-rose-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-400"
                                         />
                                     </td>

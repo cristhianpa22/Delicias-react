@@ -26,6 +26,7 @@ export default function useTable({ products, onUpdateProduct, onDeleteProduct, s
     const deleteItem = (id) => {
         onDeleteProduct(id); 
     };
+    
 
     return( 
         <Table
@@ -35,6 +36,7 @@ export default function useTable({ products, onUpdateProduct, onDeleteProduct, s
         editingId={editingId}
         editForm={editForm}
         startEdit={startEdit}
+        setEditForm={setEditForm}
         cancelEdit={cancelEdit}
         saveEdit={saveEdit}
         deleteItem={deleteItem}

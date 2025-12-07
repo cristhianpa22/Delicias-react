@@ -31,7 +31,7 @@ export default function ProductList({ products = [], children }) {
                 >
 
                     {products.map((pasteles) => (
-                        <li className="transition duration-300 rounded-xl shadow-md hover:shadow-lg border border-pink-100" 
+                        <li className=" transition duration-300 rounded-xl shadow-md hover:shadow-lg border border-pink-100 my-3" 
                         key={pasteles.id} 
                         role="listitem">
                             <Card pasteles={pasteles} onAddToCart={addToCart} />
