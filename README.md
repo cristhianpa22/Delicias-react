@@ -106,5 +106,38 @@ Delicias-React/
 - Header.jsx: Este es el encargadode mostrar el icono del carrito y de contener la navegacion hacia la siguientes vistas
 
 ## CONSUMO DE API
-- Se utilizo el api de mockapi para traer los productos que estan almacenados alli
-   
+- Se utilizo el api de mockapi para traer los productos que estan almacenados allí y tener acceso a los metodos CRUD del api.
+- Se utiliza **axios** para la coneccion con HTTP desde cliente/servidor creando las 4 funciones de agregar, ver, editar y eliminar, exportandolas a las diferentes vistas con el fin de que estas puedan llamar las funciones con Asyn/Await para retener la funcionalidad del sitio hasta que la api se conecte y de una respuesta oportuna.
+- Utilizamos el hook **useEffect** para que realice el llamdado al metodo get y se rendericen los productos solo cuando se ingrese o se recarga la pagina adicionalmente, se crea un estado para almacenar los productos que provienen del api.
+- Se muestra un loading mientras la pagina se conecta con la api y tre los productos. Apenas recibe una respuesta, el loading desaparece (independientemente de si la respuesta es positiva o negativa).
+
+## EVIDENCIAS
+-
+
+## CREDITOS DE EQUIPO 🫂
+### CRISTHIAN PADILLA 🤖
+-
+### JHON GALEANO 💎
+-
+### SOFIA BALLEN ⚡
+-
+
+## OBSERVACIONES O MEJORAS PENDIENTES
+### COMPLICACIONES
+- Presentamos inconvenientes con el manejo de las versiones en GitHub y los comandos de Git, esto por los conflictos que nos ocurrian.
+- El CardShop nos presento dificultades a la hora de implementar el useContext y la logica del carrito.
+- Errores en en la reparticion al momento de asignar tareas, nada preocupante pero podemos mejorar.
+- Fallos al comienzo del despliegue a produccion en la plataforma **VERCEL** nos generaba errores en las rutas de imagenes y al subirlo (porque no era su propiedad)
+### LO QUE NOS GUSTO
+- Aprendimos conceptos nuevos.
+- Experimentar como se lleva a cabo un trabajo de react en equipo.
+- La buena cominicacion con el equipo. Excelente ambiente laboral 😉👍🏼.
+- El tema del proyecto estuvo interesante experimentar este sector.
+- Buena gestion del tiempo del proyecto, cumplimos con nuestros plazos de entrega.
+### MEJORAS PENDIENTES
+- Validacion del usuario al ingresar al login.
+- Persistencia de los datos en el cardShop.
+- Validacion de pago.
+- Adicionar una seccion de "Sobre Nosotros" o darle mas profundizacion a la identidad de la empresa.
+- Vista individual con sus respectivas especificaciones de cada producto.
+# ¡HASTA PRONTO! 🎂✌🏼
