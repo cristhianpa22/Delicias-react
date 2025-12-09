@@ -128,7 +128,16 @@ Delicias-React/
 
 ## CREDITOS DE EQUIPO 🫂
 ### CRISTHIAN PADILLA 🤖
--
+
+|fecha	Actividad	|   Descripción                                                                                |
+|----------------|----------------------------------------------------------------------------------------------|
+|1/12/2025	      |  se creo la conexión con la API y sus 4 métodos (get, post, put, delete), se comenzó  con la creación de algunos  componentes.           |
+|2/12/2025	      | Creación de los primeros componentes	Se terminaron de crear los componentes Modal, Loading, ProductForm, Alert, ListaCard y se dio la estructura de las vistas de Dashboard y ProductTienda para llamar la carga de productos en cada vista y funcionamiento de las ruta de cada vista con Router v6.                                                                 |
+|3/12/2025	      | Lógica de renderizado de cards y correcció También se arregló la lógica para la conexión de   la ruta del Login con las otras vistas del proyecto.                                         |
+|6/12/2025       | Se creó el filtro de búsqueda por nombre, descripción, precio y un filtro por categoría del producto.                                                                                    |
+|7/12/2025       | -Se reestructuraron los componentes ProductForm y Dashboard para separar la lógica de la IU  (separar componente presentacional y contenedor).  -Se desplegó el proyecto en Vercel. Se agregó la variable de entorno para el despliegue.
+
+
 ### JHON GALEANO 💎
 -
 ### SOFIA BALLEN ⚡
