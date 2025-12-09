@@ -112,7 +112,19 @@ Delicias-React/
 - Se muestra un loading mientras la pagina se conecta con la api y tre los productos. Apenas recibe una respuesta, el loading desaparece (independientemente de si la respuesta es positiva o negativa).
 
 ## EVIDENCIAS
--
+> <img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/8b3e5a0d-a045-4ac4-afb2-c2414cf12844" />
+
+> <img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/5e3104f8-c5b8-41af-ad6f-0521960ab526" />
+
+> <img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/558eb9eb-ce66-4fbb-b338-9c8d7c3907f4" />
+
+> <img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/5c452725-440e-4a9e-bedf-19f49db8336b" />
+
+> <img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/6fe0484e-5886-40e1-a260-c912bdfe7356" />
+
+> <img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/1f24f2c5-9545-4699-8dd7-895cadfbf85e" />
+
+> <img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/14085af1-f082-4c41-8043-d0771af236c3" />
 
 ## CREDITOS DE EQUIPO 🫂
 ### CRISTHIAN PADILLA 🤖
