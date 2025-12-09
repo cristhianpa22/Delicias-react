@@ -139,7 +139,15 @@ Delicias-React/
 
 
 ### JHON GALEANO 💎
--
+|Fecha|Actividad|Descripcion|
+|-----|---------|-----------|
+|1/12/2025|Inicio del proyecto y reunión|Reunión inicial con el equipo para decidir tema del proyecto y nombre, creé  la api simulada con json-server para los productos, inicie la creaciòn de componentes Carrusel,Hero y la Tabla para los productos|
+|2/12/2025|Creación de los primeros componentes|2/12/2025	Creación de los primeros componentes	Se terminaron de crear los componentes  Carrusel,Hero y la Tabla para los productos  También hice junto al equipo las funcionalidades de crear, actualizar y borrar, en cada producto y comprobar su funcionamiento.|
+|3/12/2025|Lógica de renderizado de cards y correcciónes |3/12/2025	Lógica de renderizado de cards y correcciónes 	Reunión con el equipo para ver y corregir la estética del proyecto y creación de la lógica para que se rendericen las tarjetas y algunas correcciones, como formatear el precio en pesos colombianos y algunas correcciones en las validaciones del formulario al agregar la imagen. También se arregló la lógica para la conexión de la ruta del Hero cuando se le da al botón de explorar colección.|
+|5/12/2025 |lógica de la cartShop |se creo la lógica de el carrito haciendo renderizado de esto mismo y agregar o eliminar elementos y que se sumen los precios de los elementos del carrito y simular un pago exito|
+|6/12/2025 |re estructuración de componentes |se separaron los componentes presentacionales y componentes contenedores |
+|7/12/2025|desplegando aplicacion|se desplego la aplicacion en vercel junto al equipo| 
+
 ### SOFIA BALLEN ⚡
 -
 
