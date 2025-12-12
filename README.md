@@ -84,6 +84,7 @@ Delicias-React/
 - Tercero configuracion de variables de entorno
     > copia la plantilla .env.example y cambia el nombre a .env <br>
     > obten la URl de la api externa y pegala en ese archivo
+    > https://693493604090fe3bf020476a.mockapi.io/api/v1/
 - Por ultimo sube los servicios de vite
    ```bash
   // desde tu terminal
