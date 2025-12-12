@@ -149,8 +149,12 @@ Delicias-React/
 |7/12/2025|desplegando aplicacion|se desplego la aplicacion en vercel junto al equipo| 
 
 ### SOFIA BALLEN ⚡
--
-
+|Fecha|Actividad|Descripcion|
+|-----|---------|-----------|
+|1/12/2025|Inicio del proyecto y reunión|Reunión inicial con el equipo para decidir la estructura del proyecto en donde vimos tema, nombre, prototipo del trabajo y decidimos que componentes eran fundamentales para luego distribuirnos el diseño de estos.|
+|2/12/2025|Creación de los primeros componentes|Comencé con la estructura base de archivos, recursos y carpetas con el objetivo de evitar errores en los nombres; de igual manera empecé a buscar una identidad para nuestra página, mantener una estética y entregué los diseños iniciales del “Header” y “Footer”.|
+|3/12/2025|Lógica de renderizado de cards y correcciónes|Continue dando estilos ya con una visión mas completa gracias a la contribución de cada integrante, la pagina iba tomando forma y fue más fácil organizar una armonía visual. Subí el diseño inicial de los componentes: “login” y “card”. De igual manera se estableció el diseño y el renderizado del carrito en el componente “modal”. 
+|5/12/2025|Corrección de componentes|Establecí diseños responsivos en la página, corrección de colores e imágenes mas afines a la estética propuesta, implementación de solo dos fuentes,  corrección de colores y demás detalles.|
 ## OBSERVACIONES O MEJORAS PENDIENTES
 ### COMPLICACIONES
 - Presentamos inconvenientes con el manejo de las versiones en GitHub y los comandos de Git, esto por los conflictos que nos ocurrian.
